@@ -65,7 +65,7 @@
             </Label>
             <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="140.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="49.0">
                <image>
-                  <Image url="@../../../../Downloads/prodex-high-resolution-logo-color-on-transparent-background%20(3).png" />
+                  <Image url="@../images/PDlogo.png" />
                </image>
             </ImageView>
          </children>
