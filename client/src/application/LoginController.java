@@ -37,8 +37,6 @@ public class LoginController {
 	 */
 	public void loginBtnOnAction(ActionEvent event) throws IOException {
 		checkLogin();
-		Stage stage = (Stage) loginBtn.getScene().getWindow();
-		stage.close();
 	}
 	
 	public void checkLogin() throws IOException {

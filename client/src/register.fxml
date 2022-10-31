@@ -17,7 +17,7 @@
    <center>
       <AnchorPane maxHeight="665.0" maxWidth="446.0" prefHeight="665.0" prefWidth="446.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="123.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="142.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="142.0">
                <image>
                   <Image url="@../images/PDlogo.png" />
                </image>
