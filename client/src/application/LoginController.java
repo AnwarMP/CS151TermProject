@@ -1,12 +1,16 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -30,23 +34,26 @@ public class LoginController {
 	@FXML
 	private Hyperlink toSignUpBtn;
 	
+	double x,y=0;
+	
 	/**
 	 * Method to login on valid login inputs
 	 * @param event
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	public void loginBtnOnAction(ActionEvent event) throws IOException {
+	public void loginBtnOnAction(ActionEvent event) throws Exception {
 		checkLogin();
 	}
 	
-	public void checkLogin() throws IOException {
+	public void checkLogin() throws Exception {
 		Main m = new Main();
 		String username = usernameTextField.getText();
 		String pw = passwordField.getText();
 		
 		// mock username and pw for login
 		if(username.toString().equals("admin") && pw.toString().equals("123456")) {
-			m.changeScene("/homepage.fxml");
+			invalidLogin.setText("Success");
+			m.changeScene("views/homepage.fxml");
 		} 
 		// if username or pw field is empty, prompt user to fill all
 		else if(username.isEmpty() || pw.isEmpty()) {
@@ -65,7 +72,8 @@ public class LoginController {
 	 */
 	public void toSignupBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
-		m.changeScene("/register.fxml");
+		m.changeScene("views/register.fxml");
 	}
+	
 
 }

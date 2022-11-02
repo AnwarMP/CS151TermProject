@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="142.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="142.0">
                <image>
-                  <Image url="@../images/PDlogo.png" />
+                  <Image url="@../img/PDlogo.png" />
                </image>
             </ImageView>
             <Label layoutX="40.0" layoutY="127.0" text="Register a ProDex account">

@@ -51,12 +51,11 @@ public class SignupController implements Initializable {
 		String username = usernameTextField.getText();
 		Main m = new Main();
 		
-		// mock data to check for existing accounts
-		
 		// if missing any input value, prompt user to fill all
 		if(username.isEmpty() || passwordField.getText().isEmpty() || securityBox.getValue() == null || answerTextField.getText().isEmpty()) {
 			invalidSignup.setText("Please fill out all missing information.");
 		} 
+		// mock data to check for existing accounts
 		else if(username.toString().equals("admin")) {
 			invalidSignup.setText("Account already exists.");
 		}
@@ -73,7 +72,7 @@ public class SignupController implements Initializable {
 	 */
 	public void toLoginBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
-		m.changeScene("/login.fxml");
+		m.changeScene("views/login.fxml");
 	}
 
 	@Override

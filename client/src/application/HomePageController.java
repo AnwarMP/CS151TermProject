@@ -16,8 +16,9 @@ public class HomePageController {
 	@FXML
 	private Label loggedState;
 	
+	
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
-		m.changeScene("/login.fxml");
+		m.changeScene("views/login.fxml");
 	}
 }
