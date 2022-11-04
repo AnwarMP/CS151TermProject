@@ -13,13 +13,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class HomePageController implements Initializable {
 	
@@ -30,9 +34,14 @@ public class HomePageController implements Initializable {
 	private GridPane courseLayout;
 	
 	@FXML
+	private Button addCourseBtn;
+	
+	@FXML
 	private Pane courseBackground;
 	
+	
 	private int row = 0, col = 1, i = 0;
+	
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
@@ -43,28 +52,34 @@ public class HomePageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		List<Course> courses = new ArrayList<Course>(courses());
-		System.out.println(courses);
-		while(row < 3) {
-			while(col < 3 && i < courses.size()) {
-					try {
-						Main m = new Main();
-						CourseController courseController = m.getCourseController();
-						System.out.println(m.getPane());
-						courseController.setData(courses.get(i));
-						courseLayout.add(m.getPane(), col, row);
-				
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					col++;
-					i++;
-				}
-				row++;
-				col = 0;
-			}
+		System.out.println(courseLayout.getRowConstraints().size());
 		
+		while(row < courseLayout.getRowConstraints().size()) {
+			while(col < courseLayout.getColumnConstraints().size() && i < courses.size()) {
+				try {
+					Main m = new Main();
+					CourseItemController courseController = m.getCourseController();
+					courseController.setData(courses.get(i));
+					courseLayout.add(m.getPane(), col, row);
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				col++;
+				i++;
+			}
+			row++;
+			col = 0;
+		}
 	}
+	
+	@FXML
+	private void addCourseBtnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.openNewWindow("views/create_course.fxml", event);
+	}
+
 	
 	// mock data for courses
 	private List<Course> courses() {
@@ -72,7 +87,7 @@ public class HomePageController implements Initializable {
 		Course course = new Course();
 		
 		Integer id = 0;
-				
+
 		course.setCourseName("ISE 130");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
@@ -84,6 +99,31 @@ public class HomePageController implements Initializable {
 		
 		course = new Course();
 		course.setCourseName("CMPE 133");
+		course.setCourseId(Integer.toString(id++));
+		ls.add(course);
+		
+		course = new Course();
+		course.setCourseName("CMPE 149");
+		course.setCourseId(Integer.toString(id++));
+		ls.add(course);
+		
+		course = new Course();
+		course.setCourseName("CMPE 149");
+		course.setCourseId(Integer.toString(id++));
+		ls.add(course);
+		
+		course = new Course();
+		course.setCourseName("CMPE 149");
+		course.setCourseId(Integer.toString(id++));
+		ls.add(course);
+		
+		course = new Course();
+		course.setCourseName("CMPE 149");
+		course.setCourseId(Integer.toString(id++));
+		ls.add(course);
+		
+		course = new Course();
+		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		

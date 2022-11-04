@@ -1,4 +1,4 @@
-package application;
+package application.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +13,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-
+import application.Main;
 import javafx.event.ActionEvent;
 
 public class LoginController {
@@ -34,7 +38,8 @@ public class LoginController {
 	@FXML
 	private Hyperlink toSignUpBtn;
 	
-	double x,y=0;
+	private Connection conn;
+	
 	
 	/**
 	 * Method to login on valid login inputs
@@ -44,6 +49,7 @@ public class LoginController {
 	public void loginBtnOnAction(ActionEvent event) throws Exception {
 		checkLogin();
 	}
+	
 	
 	public void checkLogin() throws Exception {
 		Main m = new Main();
