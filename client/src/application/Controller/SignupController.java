@@ -1,9 +1,10 @@
-package application;
+package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +14,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class SignupController implements Initializable {
 	
@@ -61,7 +61,7 @@ public class SignupController implements Initializable {
 		}
 		// if username is new and all info are filled out, redirect to login
 		else {
-			m.changeScene("/login.fxml");
+			m.changeScene("views/login.fxml");
 		}
 	}
 	
