@@ -80,7 +80,7 @@ public class CourseItemController implements Initializable {
 			m = new Main("views/edit_course.fxml");
 			EditCourseController editCourseController = (EditCourseController) m.getEditCourseController();
 			System.out.println("EDIT CONTROLLER IN COURSE ITEM");
-			System.out.println(getCourseName());
+			System.out.println();
 			editCourseController.setCourseNameLabel("HIII");
 			editCourseController.setCourseId(getCourseId());
 			
