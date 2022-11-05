@@ -23,11 +23,4 @@ public class Course {
 		this.courseId = courseId;
 	}
 	
-//	public Color getCourseBackground() {
-//		return courseBackground;
-//	}
-//	
-//	public void setCourseBackground(Color courseBackground) {
-//		this.courseBackground = courseBackground;
-//	}
 }

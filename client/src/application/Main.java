@@ -1,33 +1,41 @@
 package application;
 	
 import java.io.IOException;
-import java.net.URL;
 
-import application.Controller.CourseController;
+import application.Controller.CourseItemController;
+import application.Controller.CreateCourseController;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 
 public class Main extends Application {
 	private static Stage stg;
 	
-	public CourseController courseController;
+	public CourseItemController courseController;
+	public CreateCourseController createCourseController;
 	public Pane pane;
 	
 	public Main() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("views/course_item.fxml"));
 		pane = loader.load();
-		courseController = (CourseController) loader.getController();
+		courseController = (CourseItemController) loader.getController();
+		
 //		System.out.println(courseController);
 	}
+	
+	public Main(String fxml) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+		loader.load();
+		createCourseController = (CreateCourseController) loader.getController();
+//		System.out.println(createCourseController);
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -54,38 +62,29 @@ public class Main extends Application {
 		return pane;
 	}
 	
-	public CourseController getCourseController() {
+	public CourseItemController getCourseController() {
 		return courseController;
 	}
+	
+	public CreateCourseController getCreateCourseController() {
+		return createCourseController;
+	}
+	
 	public void changeScene(String fxml) throws IOException {
-		Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-//		stg.getScene().setRoot(pane);
-		Scene scene = new Scene(pane);
+		Parent parent = FXMLLoader.load(getClass().getResource(fxml));
+		Scene scene = new Scene(parent);
 		stg.setScene(scene);
 		stg.show();
 	}
 	
-	public FXMLLoader openNewWindow(URL url) {
-//	 {
-//	     //ChildNode child;
-//	    try {                    
-//	        URL url = getClass().getResource(FXMLFile);
-//	        FXMLLoader fxmlLoader = new FXMLLoader();
-//	        fxmlLoader.setLocation(url);
-//	        fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-//	        AnchorPane page = (AnchorPane) fxmlLoader.load(url.openStream()); 
-//
-//	        pane.getChildren().clear();///name of pane where you want to put the fxml
-//	        pane.getChildren().add(page);
-//	    } 
-//	    catch (IOException e) {
-//	        e.printStackTrace();
-//	    }
+	public void openNewWindow(String fxml, ActionEvent event) throws IOException {
 		
-		FXMLLoader fxmlLoader = new FXMLLoader();
-    	fxmlLoader.setLocation(url);
-    	fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
-    	return fxmlLoader;
+		Parent add_parent = FXMLLoader.load(getClass().getResource(fxml));
+		Scene add_scene = new Scene(add_parent);
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		app_stage.hide();
+		app_stage.setScene(add_scene);
+		app_stage.show();
 	 }
 	
 	public static void main(String[] args) {
