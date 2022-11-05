@@ -21,6 +21,24 @@ public class LoginModel {
 		} //based on 
 	}
 	
+	public boolean setSession(String user) throws SQLException  {
+		
+		try {
+			
+			String query = "UPDATE session SET username=? WHERE id=?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setString(1, user);
+			statement.setInt(2, 1);
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	
+		return false;
+	}
+	
 	public boolean isLogin(String user, String pass) throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;

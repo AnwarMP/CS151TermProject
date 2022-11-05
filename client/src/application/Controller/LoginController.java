@@ -59,6 +59,10 @@ public class LoginController implements Initializable {
 		checkDbLogin();
 	}
 	
+	/**
+	 * Method to run login 
+	 * @throws IOException
+	 */
 	public void checkDbLogin() throws IOException {
 		Main m = new Main();
 		String username = usernameTextField.getText();
@@ -66,6 +70,7 @@ public class LoginController implements Initializable {
 		
 		try {
 			if(loginModel.isLogin(usernameTextField.getText(), passwordField.getText())) {
+				loginModel.setSession(username);
 				invalidLogin.setText("Success");
 				m.changeScene("views/homepage.fxml");
 			} else if(username.isEmpty() || pw.isEmpty()) {
@@ -76,26 +81,6 @@ public class LoginController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-	
-	public void checkLogin() throws Exception {
-		Main m = new Main();
-		String username = usernameTextField.getText();
-		String pw = passwordField.getText();
-		
-		// mock username and pw for login
-		if(username.toString().equals("admin") && pw.toString().equals("123456")) {
-			invalidLogin.setText("Success");
-			m.changeScene("views/homepage.fxml");
-		} 
-		// if username or pw field is empty, prompt user to fill all
-		else if(username.isEmpty() || pw.isEmpty()) {
-			invalidLogin.setText("Please enter missing input.");
-		}
-		// if account does not exist, prompt user to try again
-		else {
-			invalidLogin.setText("Invalid login! Please try again.");
 		}
 	}
 
