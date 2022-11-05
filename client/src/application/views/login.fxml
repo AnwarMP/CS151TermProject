@@ -71,4 +71,7 @@
          </children>
       </AnchorPane>
    </center>
+   <bottom>
+      <Label fx:id="isConnected" text="STATUS" textFill="#cd0e0e" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
