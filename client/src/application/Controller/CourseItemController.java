@@ -2,9 +2,13 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.SQLiteConnection;
 import application.model.CourseModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,24 +39,37 @@ public class CourseItemController implements Initializable {
 
     public void setData(CourseModel course) {
     	courseName.setText(course.getCourseName());
-    	//courseId.setText(course.getCourseId());
+    	courseId.setText(Integer.toString(course.getCourseId()));
     }
     
     public String getCourseName() {
     	return courseName.getText();
     }
     
+    public String getCourseId() {
+    	return courseId.getText();
+    }
+    
 	
 	@FXML
-	private void editCourseBtnAction(ActionEvent event) throws IOException {
-		Main m = new Main("views/create_course.fxml");
-		m.openNewWindow("views/create_course.fxml", event);
+	private void editCourseBtnAction(ActionEvent event) throws IOException, SQLException {
+		Main m = new Main("views/edit_course.fxml");
 		
-		CreateCourseController controller = m.getCreateCourseController();
-//		 System.out.println("INSIDE COURSE ITEM");
-//	        System.out.println(controller);
-        controller.setCourseName(getCourseName()); // nameText val queried from db to display in input field
-	
+		
+		EditCourseController editCourseController = (EditCourseController) m.getEditCourseController();
+		System.out.println("EDIT CONTROLLER IN COURSE ITEM");
+		System.out.println(editCourseController);
+		editCourseController.setCourseNameLabel("HIII");
+		editCourseController.setCourseId(getCourseId());
+		
+		System.out.println("COURSE NAME IN COURSE ITEM");
+		System.out.println(getCourseName());
+
+		m.openNewWindow("views/edit_course.fxml", event);
+//        controller.setFormCourseName(getCourseName()); // nameText val queried from db to display in input field
+
+        // update data in DB -- manipulate fx:id for each edit btn, "rowId+edit"
+        
 	}
 	
 	@FXML

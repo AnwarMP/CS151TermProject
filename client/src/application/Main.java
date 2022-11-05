@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import application.Controller.CourseItemController;
 import application.Controller.CreateCourseController;
+import application.Controller.EditCourseController;
+import application.Controller.LoginController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 
@@ -19,6 +22,7 @@ public class Main extends Application {
 	
 	public CourseItemController courseController;
 	public CreateCourseController createCourseController;
+	public EditCourseController editCourseController;
 	public Pane pane;
 	
 	public Main() throws IOException {
@@ -26,23 +30,39 @@ public class Main extends Application {
 		pane = loader.load();
 		courseController = (CourseItemController) loader.getController();
 		
-//		System.out.println(courseController);
+		System.out.println(courseController);
 	}
-	
+//	
 	public Main(String fxml) throws IOException {
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		loader.load();
-		createCourseController = (CreateCourseController) loader.getController();
-//		System.out.println(createCourseController);
+		
+        if(fxml.equals("views/create_course.fxml"))
+        {
+        	createCourseController = (CreateCourseController)loader.getController();
+        }
+        else if(fxml.equals("views/edit_course.fxml"))
+        {
+        	editCourseController = (EditCourseController)loader.getController();
+        }
 	}
+	
+//	public Main(String file) throws IOException {
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+//		loader.load();
+//		createCourseController = (CreateCourseController) loader.getController();
+//	}
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			stg = primaryStage;
 			
-			Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/login.fxml"));
 			
+			Parent root = (Parent) loader.load();
+			LoginController controller = loader.getController();
 			System.out.println(getClass().getResource("views/course_item.fxml"));
 			
 			Scene scene = new Scene(root,1440,900);
@@ -51,6 +71,8 @@ public class Main extends Application {
 			primaryStage.setTitle("ProDex");
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			System.out.println("COURSE CONTROLLER");
+			System.out.println(getCourseController());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -60,12 +82,20 @@ public class Main extends Application {
 		return pane;
 	}
 	
+	public void setCourseController(CourseItemController courseController) {
+		this.courseController = courseController;
+	}
+	
 	public CourseItemController getCourseController() {
 		return courseController;
 	}
 	
 	public CreateCourseController getCreateCourseController() {
 		return createCourseController;
+	}
+	
+	public EditCourseController getEditCourseController() {
+		return editCourseController;
 	}
 	
 	public void changeScene(String fxml) throws IOException {
