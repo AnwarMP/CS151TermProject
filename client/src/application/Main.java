@@ -42,8 +42,6 @@ public class Main extends Application {
 			stg = primaryStage;
 			
 			Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
-
-			
 			
 			System.out.println(getClass().getResource("views/course_item.fxml"));
 			

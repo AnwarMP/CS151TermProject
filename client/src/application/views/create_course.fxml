@@ -21,7 +21,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="courseName" layoutX="53.0" layoutY="153.0" prefHeight="32.0" prefWidth="498.0" promptText="Enter course name" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="53.0">
+            <TextField fx:id="courseName" layoutX="53.0" layoutY="153.0" prefHeight="32.0" prefWidth="498.0" promptText="Enter course name" text="" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="53.0">
                <font>
                   <Font size="18.0" />
                </font>
