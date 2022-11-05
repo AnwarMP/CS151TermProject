@@ -54,17 +54,8 @@ public class CourseItemController implements Initializable {
 	@FXML
 	private void editCourseBtnAction(ActionEvent event) throws IOException, SQLException {
 		Main m = new Main("views/edit_course.fxml");
-		
-		
-		EditCourseController editCourseController = (EditCourseController) m.getEditCourseController();
-		System.out.println("EDIT CONTROLLER IN COURSE ITEM");
-		System.out.println(editCourseController);
-		editCourseController.setCourseNameLabel("HIII");
-		editCourseController.setCourseId(getCourseId());
-		
 		System.out.println("COURSE NAME IN COURSE ITEM");
 		System.out.println(getCourseName());
-
 		m.openNewWindow("views/edit_course.fxml", event);
 //        controller.setFormCourseName(getCourseName()); // nameText val queried from db to display in input field
 
@@ -84,7 +75,20 @@ public class CourseItemController implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		Main m;
+		try {
+			m = new Main("views/edit_course.fxml");
+			EditCourseController editCourseController = (EditCourseController) m.getEditCourseController();
+			System.out.println("EDIT CONTROLLER IN COURSE ITEM");
+			System.out.println(getCourseName());
+			editCourseController.setCourseNameLabel("HIII");
+			editCourseController.setCourseId(getCourseId());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
