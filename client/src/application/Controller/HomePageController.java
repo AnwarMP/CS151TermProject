@@ -90,47 +90,47 @@ public class HomePageController implements Initializable {
 		Integer id = 0;
 
 		course.setCourseName("ISE 130");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CS 151");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 133");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		course = new CourseModel();
 		course.setCourseName("CMPE 149");
-		course.setCourseId(Integer.toString(id++));
+		//course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
 		System.out.println(ls.get(1).getCourseName());

@@ -25,6 +25,11 @@ public class LoginModel {
 		
 		try {
 			
+			Statement stmt = connection.createStatement();
+			String sql = "REPLACE INTO session (id,username) " +
+	                  "VALUES (1, 'empty');"; 
+	        stmt.executeUpdate(sql);
+			
 			String query = "UPDATE session SET username=? WHERE id=?";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, user);

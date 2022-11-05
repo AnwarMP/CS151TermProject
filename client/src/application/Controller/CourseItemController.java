@@ -35,7 +35,7 @@ public class CourseItemController implements Initializable {
 
     public void setData(CourseModel course) {
     	courseName.setText(course.getCourseName());
-    	courseId.setText(course.getCourseId());
+    	//courseId.setText(course.getCourseId());
     }
     
     public String getCourseName() {

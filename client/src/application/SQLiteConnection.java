@@ -32,10 +32,7 @@ public class SQLiteConnection {
 	        
 	        stmt.executeUpdate(sql);
 	        
-	        sql = "REPLACE INTO session (id,username) " +
-	                  "VALUES (1, 'empty');"; 
-	        
-	        stmt.executeUpdate(sql);
+	       
 	        
 	        stmt.close();
 
