@@ -31,7 +31,6 @@ public class CreateCourseController {
     private Button cancelBtn;
     
     private Connection conn;
-    private Statement stmt;
     
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException, SQLException {
@@ -54,9 +53,6 @@ public class CreateCourseController {
     	sql2.append(res.getString("username"));
     	sql2.append("_courses (courseName)" + " VALUES ( " + "'" + courseName.getText() + "');");
     	
-    	System.out.println("Inserting\n" + sql2.toString());
-    	System.out.println(sql1.toString());
-    	
     	stmt.executeUpdate(sql1.toString());
     	stmt.executeUpdate(sql2.toString());
     	stmt.close();
@@ -73,29 +69,6 @@ public class CreateCourseController {
     	Main m = new Main();
     	m.openNewWindow("views/homepage.fxml", event);
     }
-    
-    private void insertStatement(StringBuffer create_query, String insert_query){
-       
-        
-//        try {
-//          Class.forName("org.sqlite.JDBC");
-//          conn = DriverManager.getConnection("jdbc:sqlite:course.db");
-//          conn.setAutoCommit(false);
-//          System.out.println("Opened database successfully");
-//          stmt = conn.createStatement(); 
-//          System.out.println("Our query was: " + insert_query);
-//          stmt.executeUpdate(create_query);
-//          stmt.executeUpdate(insert_query);
-//          stmt.close();
-//          conn.commit();
-//          conn.close();
-//        }catch ( Exception e ) {
-//        	System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-//        	System.exit(0);  
-//        }
-          
-        
-      }
     
     
     @FXML
