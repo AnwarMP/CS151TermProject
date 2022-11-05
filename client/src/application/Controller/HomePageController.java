@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.model.Course;
+import application.model.CourseModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,7 +51,7 @@ public class HomePageController implements Initializable {
 	// adding course item component to list
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		List<Course> courses = new ArrayList<Course>(courses());
+		List<CourseModel> courses = new ArrayList<CourseModel>(courses());
 		System.out.println(courseLayout.getRowConstraints().size());
 		
 		while(row < courseLayout.getRowConstraints().size()) {
@@ -61,7 +61,8 @@ public class HomePageController implements Initializable {
 					CourseItemController courseController = m.getCourseController();
 					courseController.setData(courses.get(i));
 					courseLayout.add(m.getPane(), col, row);
-				
+					// if dleteBtn is clicked, remove course from courseLayout, decrement col
+					//courseLayout.getChildren().remove(i)
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -82,9 +83,9 @@ public class HomePageController implements Initializable {
 
 	
 	// mock data for courses
-	private List<Course> courses() {
-		List<Course> ls = new ArrayList<Course>();
-		Course course = new Course();
+	private List<CourseModel> courses() {
+		List<CourseModel> ls = new ArrayList<CourseModel>();
+		CourseModel course = new CourseModel();
 		
 		Integer id = 0;
 
@@ -92,42 +93,42 @@ public class HomePageController implements Initializable {
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CS 151");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 133");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);
 		
-		course = new Course();
+		course = new CourseModel();
 		course.setCourseName("CMPE 149");
 		course.setCourseId(Integer.toString(id++));
 		ls.add(course);

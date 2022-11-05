@@ -19,9 +19,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.SQLiteConnection;
 import application.model.LoginModel;
 import javafx.event.ActionEvent;
 
@@ -59,7 +61,25 @@ public class LoginController implements Initializable {
 		checkDbLogin();
 	}
 	
-	public void checkDbLogin() throws IOException {
+	public void checkDbLogin() throws IOException, SQLException {
+		conn = SQLiteConnection.Connector();
+		//Creating a table for the user 
+		Statement stmt = conn.createStatement();
+		
+		String sql = "CREATE TABLE IF NOT EXISTS users (\n"
+	                + " id			INT PRIMARY KEY,\n"
+	                + "	username	TEXT	NOT NULL,\n"
+	                + "	password	TEXT	NOT NULL\n"
+	                + ");";	
+		
+		String sql2 = "REPLACE INTO users (id,username,password) " +
+                "VALUES (8, 'admin', '123456');"; 
+		stmt.executeUpdate(sql);
+		
+        stmt.executeUpdate(sql2);
+		
+
+        
 		Main m = new Main();
 		String username = usernameTextField.getText();
 		String pw = passwordField.getText();
@@ -79,25 +99,6 @@ public class LoginController implements Initializable {
 		}
 	}
 	
-	public void checkLogin() throws Exception {
-		Main m = new Main();
-		String username = usernameTextField.getText();
-		String pw = passwordField.getText();
-		
-		// mock username and pw for login
-		if(username.toString().equals("admin") && pw.toString().equals("123456")) {
-			invalidLogin.setText("Success");
-			m.changeScene("views/homepage.fxml");
-		} 
-		// if username or pw field is empty, prompt user to fill all
-		else if(username.isEmpty() || pw.isEmpty()) {
-			invalidLogin.setText("Please enter missing input.");
-		}
-		// if account does not exist, prompt user to try again
-		else {
-			invalidLogin.setText("Invalid login! Please try again.");
-		}
-	}
 
 	/**
 	 * Method to navigate to sign up page from login page

@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.model.Course;
+import application.model.CourseModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,9 +33,13 @@ public class CourseItemController implements Initializable {
     @FXML
     private Button deleteBtn;
 
-    public void setData(Course course) {
+    public void setData(CourseModel course) {
     	courseName.setText(course.getCourseName());
     	courseId.setText(course.getCourseId());
+    }
+    
+    public String getCourseName() {
+    	return courseName.getText();
     }
     
 	
@@ -47,15 +51,17 @@ public class CourseItemController implements Initializable {
 		CreateCourseController controller = m.getCreateCourseController();
 //		 System.out.println("INSIDE COURSE ITEM");
 //	        System.out.println(controller);
-        controller.setCourseName("nameText"); // nameText val queried from db to display in input field
+        controller.setCourseName(getCourseName()); // nameText val queried from db to display in input field
+	
 	}
 	
 	@FXML
 	private void deleteCourseBtnAction(ActionEvent event) throws IOException {
-//		System.out.println("DEL BTN Parent");
-//		Pane pane = (Pane) deleteBtn.getParent();
-//		
+		System.out.println("DEL BTN Parent");
+		Pane pane = (Pane) deleteBtn.getParent();
+		
 //		System.out.println(pane.getChildren());
+		System.out.println(getCourseName());
 		
 	}
     
