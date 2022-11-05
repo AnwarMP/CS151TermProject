@@ -11,7 +11,7 @@
    <center>
       <AnchorPane maxHeight="280.0" maxWidth="600.0" prefHeight="280.0" prefWidth="600.0" style="-fx-background-color: FFFFF; -fx-border-color: black; -fx-border-radius: 10px;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="courseModalTitle" layoutX="245.0" layoutY="46.0" text="Course">
+            <Label fx:id="courseModalTitle" layoutX="209.0" layoutY="47.0" text="Add Course">
                <font>
                   <Font name="Arial Bold" size="32.0" />
                </font>

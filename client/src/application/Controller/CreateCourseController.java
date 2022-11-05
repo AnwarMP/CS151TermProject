@@ -30,36 +30,12 @@ public class CreateCourseController {
     @FXML
     private Button cancelBtn;
     
-    private Connection conn;
+    private CourseModel courseModel = new CourseModel();
     
     @FXML
     private void saveBtnAction(ActionEvent event) throws IOException, SQLException {
-    	conn = SQLiteConnection.Connector();
-    	 Statement stmt = conn.createStatement();
-    	 
-    	 ResultSet res = stmt.executeQuery("SELECT * FROM users WHERE username='admin' AND password='123456'");
     	
-
-		StringBuffer sql1 = new StringBuffer("CREATE TABLE IF NOT EXISTS ");
-
-		sql1.append(res.getString("username"));	// query from db
-		sql1.append("_courses (\n"
-				+ " courseName	TEXT	NOT NULL\n"
-				+ ");");
-        
-    	// DB Commands
-        
-    	StringBuffer sql2 = new StringBuffer("INSERT INTO ");
-    	sql2.append(res.getString("username"));
-    	sql2.append("_courses (courseName)" + " VALUES ( " + "'" + courseName.getText() + "');");
-    	
-    	stmt.executeUpdate(sql1.toString());
-    	stmt.executeUpdate(sql2.toString());
-    	stmt.close();
-    	
-    	
-    	
-    	
+    	courseModel.createCourse(courseName.getText());
     	
     	// Set UI
 //    	Course course = new Course();
@@ -75,11 +51,15 @@ public class CreateCourseController {
     private void cancelBtnAction(ActionEvent event) throws IOException {
     	Main m = new Main();
     	m.openNewWindow("views/homepage.fxml", event);
+    	
+    	System.out.println("FORM TEXT INSIDE CREATE COURSE");
+    	System.out.println(getFormCourseName());
     }
     
-    // set course name
-    public void setCourseName(String name) {
-    	courseName.setText(name);
+    
+    @FXML
+    public String getFormCourseName() {
+    	return courseName.getText();
     }
     
 }
