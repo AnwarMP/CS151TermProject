@@ -77,6 +77,29 @@ public class CourseModel {
 		connection.close();
 	}
 	
+	public void deleteCourse(String courseName) throws SQLException{
+		Statement stmt = connection.createStatement();
+   	 
+    	ResultSet res = stmt.executeQuery("SELECT * FROM session");
+    	
+        
+		// delete course from table
+    	StringBuffer sql = new StringBuffer("DELETE FROM ");
+    	sql.append(res.getString("username"));
+    	sql.append("_courses");
+    	sql.append(" WHERE id=");
+		sql.append(courseId);
+		sql.append(" AND courseName=");
+		sql.append(courseName);
+		System.out.println(sql.toString());
+    	stmt.executeUpdate(sql.toString());
+
+
+    	stmt.close();
+    	res.close();
+    	connection.close();
+	}
+	
 	public String getCourseName() {
 		return courseName;
 	}
