@@ -21,10 +21,10 @@ import javafx.scene.control.TextField;
 
 public class ResetPasswordController implements Initializable {
 	@FXML 
-	private PasswordField newPassword;
+	private PasswordField newPasswordField;
 	
 	@FXML 
-	private PasswordField reenterPassword;
+	private PasswordField reenterPasswordField;
 	
 	@FXML 
 	private ComboBox<String> securityBox;
@@ -36,17 +36,41 @@ public class ResetPasswordController implements Initializable {
 	private Button doneBtn;
 	
 	@FXML
-	private Button resetPasswordBtn;
+	private Button myCoursesBtn;
+	
+	@FXML
+	private Label emptyFields;
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
-		Main m = new Main();
-		m.changeScene("views/login.fxml");
+		checkTextFields();
 	}
 	
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
+	}
+	
+	public void myCoursesBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/homepage.fxml");
+	}
+	
+	public void checkTextFields() throws IOException{
+		Main m = new Main();
+		
+		String newPassword = newPasswordField.getText();
+		String reNewPassword = reenterPasswordField.getText();
+		
+		//if any fields are empty
+		if(newPassword.isEmpty() || reNewPassword.isEmpty() || securityBox.getValue() == null || answerTextField.getText().isEmpty()) {
+			emptyFields.setText("Please fill out all missing information.");
+		} 
+		else {
+			m.changeScene("views/login.fxml");
+		}
+		
+		
 	}
 	
 	@Override
