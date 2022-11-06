@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import application.Controller.CourseItemController;
 import application.Controller.CreateCourseController;
-import application.Controller.EditCourseController;
 import application.Controller.LoginController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -22,7 +21,6 @@ public class Main extends Application {
 	
 	public CourseItemController courseController;
 	public CreateCourseController createCourseController;
-	public EditCourseController editCourseController;
 	public Pane pane;
 	
 	public Main() throws IOException {
@@ -42,17 +40,8 @@ public class Main extends Application {
         {
         	createCourseController = (CreateCourseController)loader.getController();
         }
-        else if(fxml.equals("views/edit_course.fxml"))
-        {
-        	editCourseController = (EditCourseController)loader.getController();
-        }
 	}
 	
-//	public Main(String file) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-//		loader.load();
-//		createCourseController = (CreateCourseController) loader.getController();
-//	}
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -94,9 +83,6 @@ public class Main extends Application {
 		return createCourseController;
 	}
 	
-	public EditCourseController getEditCourseController() {
-		return editCourseController;
-	}
 	
 	public void changeScene(String fxml) throws IOException {
 		Parent parent = FXMLLoader.load(getClass().getResource(fxml));
