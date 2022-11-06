@@ -68,11 +68,6 @@
                   <Font name="Helvetica" size="20.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="forgotPwBtn" layoutX="35.0" layoutY="404.0" onAction="#forgotPwBtnOnAction" text="Forgot Password" textFill="#18a0fb">
-               <font>
-                  <Font name="Arial" size="17.0" />
-               </font>
-            </Hyperlink>
          </children>
       </AnchorPane>
    </center>

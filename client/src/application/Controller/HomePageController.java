@@ -95,7 +95,11 @@ public class HomePageController implements Initializable {
 		m.openNewWindow("views/create_course.fxml", event);
 	}
 
-	
+	@FXML
+	private void resetPasswordBtnAction(ActionEvent event) throws IOException, SQLException{
+		Main m = new Main();
+		m.openNewWindow("views/reset_password.fxml", event);
+	}
 	
 
 	private List<CourseModel> setUpCourses() throws SQLException {	
