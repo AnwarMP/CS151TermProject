@@ -39,13 +39,14 @@ public class CourseModel {
 				+ " courseName	TEXT	NOT NULL\n"
 				+ ");");
         
+    	stmt.executeUpdate(sql1.toString());
+
 		// insert courses into table
     	StringBuffer sql2 = new StringBuffer("INSERT INTO ");
     	sql2.append(res.getString("username"));
     	sql2.append("_courses (courseName)" + " VALUES ( " + "'" + courseName + "');");
     	
     	
-    	stmt.executeUpdate(sql1.toString());
     	stmt.executeUpdate(sql2.toString());
 
     	stmt.close();

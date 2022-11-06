@@ -36,26 +36,35 @@ public class ResetPasswordModel {
 			PreparedStatement verification = connection.prepareStatement(answerVerify);
 			verification.setString(1, user);
 			verification.setString(2, answer);
+			
+			
 			ResultSet resultSet = verification.executeQuery();
+			verification.close();
 			
 			//if it doesnt match then we can throw a false
 			if(!resultSet.next()) {
+				
 				System.out.println("the answer was wrong");
 				return false;
 			}
+			resultSet.close();
 			
 			//if it does match we can continue 
 			statement = connection.prepareStatement(query);
 			statement.setString(1, password);
 			statement.setString(2, user);
 			statement.executeUpdate();
+			statement.close();
 			
 			return true;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		} finally {
+			stmt.close();
+			
+		}
 		return false; 
 	} 
 	
