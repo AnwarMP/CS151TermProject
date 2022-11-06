@@ -58,6 +58,7 @@ public class SignupController implements Initializable {
 		
 		String username = usernameTextField.getText();
 		String pw = passwordField.getText();
+		String answer = answerTextField.getText();
 		
 		// if missing any input value, prompt user to fill all
 		try {
@@ -65,7 +66,7 @@ public class SignupController implements Initializable {
 				invalidSignup.setText("Please fill out all missing information.");
 			} 
 			// mock data to check for existing accounts
-			else if(!signUpModel.signUp(username, pw)) {
+			else if(!signUpModel.signUp(username, pw, answer)) {
 				invalidSignup.setText("Account already exists.");
 			}
 			// if username is new and all info are filled out, redirect to login

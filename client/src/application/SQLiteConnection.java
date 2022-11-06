@@ -13,17 +13,16 @@ public class SQLiteConnection {
 			
 			String sql = "CREATE TABLE IF NOT EXISTS users (\n"
 		                + "	username	TEXT	NOT NULL,\n"
-		                + "	password	TEXT	NOT NULL\n"
+		                + "	password	TEXT	NOT NULL,\n"
+		                + " answer		TEXT	NOT NULL"
 		                + ");";	
+			
 			
 			stmt.executeUpdate(sql);
 			
-			
-	        stmt.executeUpdate(sql);
-			
 	        //create session table to keep track of who is currently logged in
 	        sql = "CREATE TABLE IF NOT EXISTS session (\n"
-//	                + " id			INT PRIMARY KEY,\n"
+	                + " id			INT PRIMARY KEY,\n"
 	                + "	username	TEXT	NOT NULL\n"
 	                + ");";	
 	        

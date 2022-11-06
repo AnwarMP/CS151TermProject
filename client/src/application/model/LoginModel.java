@@ -4,6 +4,7 @@ import java.sql.*;
 import application.SQLiteConnection;
 
 public class LoginModel {
+	
 	Connection connection;
 	public LoginModel() {
 		connection = SQLiteConnection.Connector();
@@ -28,6 +29,7 @@ public class LoginModel {
 			Statement stmt = connection.createStatement();
 			String sql = "REPLACE INTO session (id,username) " +
 	                  "VALUES (1, 'empty');"; 
+			
 	        stmt.executeUpdate(sql);
 			
 			String query = "UPDATE session SET username=? WHERE id=?";

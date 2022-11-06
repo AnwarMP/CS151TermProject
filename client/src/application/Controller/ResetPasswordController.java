@@ -2,11 +2,13 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
 import application.model.LoginModel;
+import application.model.ResetPasswordModel;
 import application.model.SignUpModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,8 +44,46 @@ public class ResetPasswordController implements Initializable {
 	private Label emptyFields;
 	
 	@FXML
+	private Button logoutBtn; 
+	
+	
+	public ResetPasswordModel resetModel = new ResetPasswordModel(); 
+	
+	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
-		checkTextFields();
+	//	checkTextFields();
+		updatePassword();
+	}
+	
+	public void updatePassword() throws IOException {
+		Main m = new Main();
+
+		String pw = newPasswordField.getText();
+		String repw = reenterPasswordField.getText();
+		String answer = answerTextField.getText();
+		
+		
+		
+		// if missing any input value, prompt user to fill all
+		try {
+			if(repw.isEmpty() || pw.isEmpty() || answerTextField.getText().isEmpty()) {
+				emptyFields.setText("Please fill out all missing information.");
+				//set the label to above
+			} 
+			// mock data to check for existing accounts
+			else if(!resetModel.updatePassword(pw, repw, answer)) {
+				emptyFields.setText("Incorrect information");
+				//set label above to 'wrong answer' 
+			}
+			// if username is new and all info are filled out, redirect to login
+			else {
+				m.changeScene("views/login.fxml");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
