@@ -54,18 +54,21 @@ public class CourseModel {
 	}
 	
 	public void updateCourse(int courseId, String courseName, String updatedValue) throws SQLException {
-        Statement stmt = connection.createStatement();
+        System.out.println("INSIDE COURSE MODEL");
+        System.out.println(courseName);
+		Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery("SELECT * FROM session");
         
         StringBuffer sql = new StringBuffer("UPDATE ");
 
 		sql.append(res.getString("username"));	// query from db
-		sql.append("_courses SET courseName=");
+		sql.append("_courses SET courseName='");
 		sql.append(updatedValue);
-		sql.append(" WHERE id=");
+		sql.append("' WHERE id=");
 		sql.append(courseId);
-		sql.append(" AND courseName=");
+		sql.append(" AND courseName='");
 		sql.append(courseName);
+		sql.append("'");
 		
 		System.out.println("UPDATE QUERY: ");
 		
@@ -77,7 +80,7 @@ public class CourseModel {
 		connection.close();
 	}
 	
-	public void deleteCourse(String courseName) throws SQLException{
+	public void deleteCourse(int courseId, String courseName) throws SQLException{
 		Statement stmt = connection.createStatement();
    	 
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
@@ -89,11 +92,13 @@ public class CourseModel {
     	sql.append("_courses");
     	sql.append(" WHERE id=");
 		sql.append(courseId);
-		sql.append(" AND courseName=");
+		sql.append(" AND courseName='");
 		sql.append(courseName);
+		sql.append("'");
 		System.out.println(sql.toString());
     	stmt.executeUpdate(sql.toString());
-
+    	
+    	System.out.println("SUCCESS");
 
     	stmt.close();
     	res.close();
