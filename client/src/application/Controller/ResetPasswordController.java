@@ -36,6 +36,9 @@ public class ResetPasswordController implements Initializable {
 	private Button doneBtn;
 	
 	@FXML
+	private Button resetPasswordBtn;
+	
+	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
