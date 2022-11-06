@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: EDEDED;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: EDEDED;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.LoginController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -35,25 +35,25 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="245.0" text="Username" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <Label layoutX="40.0" layoutY="236.0" text="Username" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" centerShape="false" layoutX="25.0" layoutY="280.0" maxHeight="34.0" prefHeight="34.0" prefWidth="200.0" promptText="Enter username" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <TextField fx:id="usernameTextField" centerShape="false" layoutX="40.0" layoutY="271.0" maxHeight="34.0" prefHeight="34.0" prefWidth="200.0" promptText="Enter username" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <Label layoutX="25.0" layoutY="336.0" text="Password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <Label layoutX="40.0" layoutY="327.0" text="Password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="25.0" layoutY="370.0" prefHeight="34.0" prefWidth="396.0" promptText="Enter password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <PasswordField fx:id="passwordField" layoutX="40.0" layoutY="361.0" prefHeight="34.0" prefWidth="396.0" promptText="Enter password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="Helvetica" size="18.0" />
                </font></PasswordField>
-            <Button fx:id="loginBtn" layoutX="25.0" layoutY="449.0" mnemonicParsing="false" onAction="#loginBtnOnAction" prefHeight="27.0" prefWidth="197.0" style="-fx-background-color: #18a0fb;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <Button fx:id="loginBtn" layoutX="40.0" layoutY="452.0" mnemonicParsing="false" onAction="#loginBtnOnAction" prefHeight="27.0" prefWidth="197.0" style="-fx-background-color: #18a0fb;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="Arial Bold" size="22.0" />
                </font>
@@ -66,6 +66,11 @@
             <Hyperlink fx:id="toSignUpBtn" layoutX="256.0" layoutY="517.0" onAction="#toSignupBtnOnAction" text="Sign up instead" textFill="#18a0fb" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font name="Helvetica" size="20.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="forgotPwBtn" layoutX="35.0" layoutY="404.0" onAction="#forgotPwBtnOnAction" text="Forgot Password" textFill="#18a0fb">
+               <font>
+                  <Font name="Arial" size="17.0" />
                </font>
             </Hyperlink>
          </children>
