@@ -37,6 +37,8 @@ public class CourseItemController implements Initializable {
     @FXML
     private Button deleteBtn;
 
+    private CourseModel courseModel = new CourseModel();
+    
     public void setData(CourseModel course) {
     	courseName.setText(course.getCourseName());
     	courseId.setText(Integer.toString(course.getCourseId()));
@@ -64,7 +66,12 @@ public class CourseItemController implements Initializable {
 	}
 	
 	@FXML
-	private void deleteCourseBtnAction(ActionEvent event) throws IOException {
+	private void deleteCourseBtnAction(ActionEvent event) throws IOException, SQLException {
+		courseModel.deleteCourse(courseName.getText());
+		
+		Main m = new Main();
+    	m.openNewWindow("views/homepage.fxml", event);
+		
 		System.out.println("DEL BTN Parent");
 		Pane pane = (Pane) deleteBtn.getParent();
 		
