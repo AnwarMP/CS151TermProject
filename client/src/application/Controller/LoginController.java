@@ -44,6 +44,9 @@ public class LoginController implements Initializable {
 	@FXML
 	private Hyperlink toSignUpBtn;
 	
+	@FXML
+	private Hyperlink forgotPwBtn;
+	
 	private Connection conn;
 	public LoginModel loginModel = new LoginModel();
 	
@@ -96,7 +99,15 @@ public class LoginController implements Initializable {
 		m.changeScene("views/register.fxml");
 	}
 
-
+	
+	@FXML
+	public void forgotPwBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/reset_password.fxml");
+	}
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
