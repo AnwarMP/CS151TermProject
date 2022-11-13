@@ -28,7 +28,6 @@ public class Main extends Application {
 		pane = loader.load();
 		courseController = (CourseItemController) loader.getController();
 		
-		System.out.println(courseController);
 	}
 //	
 	public Main(String fxml) throws IOException {
@@ -51,8 +50,6 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("views/login.fxml"));
 			
 			Parent root = (Parent) loader.load();
-			LoginController controller = loader.getController();
-			System.out.println(getClass().getResource("views/course_item.fxml"));
 			
 			Scene scene = new Scene(root,1440,900);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -60,8 +57,6 @@ public class Main extends Application {
 			primaryStage.setTitle("ProDex");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			System.out.println("COURSE CONTROLLER");
-			System.out.println(getCourseController());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

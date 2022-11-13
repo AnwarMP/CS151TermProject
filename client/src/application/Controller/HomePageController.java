@@ -65,7 +65,6 @@ public class HomePageController implements Initializable {
 		List<CourseModel> courses;
 		try {
 			courses = new ArrayList<CourseModel>(setUpCourses());
-			System.out.println(courseLayout.getRowConstraints().size());
 			
 			while(row < courseLayout.getRowConstraints().size()) {
 				while(col < courseLayout.getColumnConstraints().size() && i < courses.size()) {
@@ -122,11 +121,14 @@ public class HomePageController implements Initializable {
         while (courseResult.next()) {
 	    	courseModel = new CourseModel();
 	    	courseModel.setCourseId(courseResult.getInt(1));
-//	    	System.out.println(courseResult.getInt(1));
 	    	courseModel.setCourseName(courseResult.getString("courseName"));
 	        list.add(courseModel);
 	    	
 	    }
+        
+        courseResult.close();
+        stmt.close();
+        conn.close();
         
 		return list;
 	}

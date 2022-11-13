@@ -27,7 +27,7 @@
                   <Font name="Arial" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="cancelEditBtn" layoutX="274.0" layoutY="65.0" visible="false" mnemonicParsing="false" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: #18a0fb; -fx-border-radius: 3px;" text="Cancel" textFill="#18a0fb">
+            <Button fx:id="cancelEditBtn" layoutX="274.0" layoutY="65.0" visible="false" mnemonicParsing="false" onAction="#cancelEditBtnAction" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: #18a0fb; -fx-border-radius: 3px;" text="Cancel" textFill="#18a0fb">
                <font>
                   <Font name="Arial" size="11.0" />
                </font>

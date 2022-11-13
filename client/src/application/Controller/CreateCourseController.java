@@ -37,11 +37,6 @@ public class CreateCourseController {
     	
     	courseModel.createCourse(courseName.getText());
     	
-    	// Set UI
-//    	Course course = new Course();
-//    	course.setCourseName(courseName.getText());
-//    	course.setCourseId("3");	// query param from db
-    	
     	Main m = new Main();
     	m.openNewWindow("views/homepage.fxml", event);
     }
@@ -51,9 +46,6 @@ public class CreateCourseController {
     private void cancelBtnAction(ActionEvent event) throws IOException {
     	Main m = new Main();
     	m.openNewWindow("views/homepage.fxml", event);
-    	
-    	System.out.println("FORM TEXT INSIDE CREATE COURSE");
-    	System.out.println(getFormCourseName());
     }
     
     

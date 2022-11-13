@@ -41,9 +41,10 @@ public class CourseModel {
         
     	stmt.executeUpdate(sql1.toString());
 
+    	ResultSet res2 = stmt.executeQuery("SELECT * FROM session");
 		// insert courses into table
     	StringBuffer sql2 = new StringBuffer("INSERT INTO ");
-    	sql2.append(res.getString("username"));
+    	sql2.append(res2.getString("username"));
     	sql2.append("_courses (courseName)" + " VALUES ( " + "'" + courseName + "');");
     	
     	
@@ -51,12 +52,11 @@ public class CourseModel {
 
     	stmt.close();
     	res.close();
+    	res2.close();
     	connection.close();
 	}
 	
 	public void updateCourse(int courseId, String courseName, String updatedValue) throws SQLException {
-        System.out.println("INSIDE COURSE MODEL");
-        System.out.println(courseName);
 		Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery("SELECT * FROM session");
         
@@ -71,9 +71,6 @@ public class CourseModel {
 		sql.append(courseName);
 		sql.append("'");
 		
-		System.out.println("UPDATE QUERY: ");
-		
-		System.out.println(sql.toString());
 		stmt.executeUpdate(sql.toString());
 		
 		stmt.close();

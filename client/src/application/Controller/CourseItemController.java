@@ -72,25 +72,9 @@ public class CourseItemController implements Initializable {
 	
 	@FXML
 	private void editCourseBtnAction(ActionEvent event) throws IOException, SQLException {
-//		Main m = new Main("views/edit_course.fxml");
-//		System.out.println("COURSE NAME IN COURSE ITEM");
-//		System.out.println(getCourseName());
-//		
-//		EditCourseController editCourseController = (EditCourseController) m.getEditCourseController();
-//		System.out.println("EDIT CONTROLLER IN COURSE ITEM");
-//		System.out.println(editCourseController.getCourseNameLabel());
-//		editCourseController.setCourseNameLabel(getCourseName());
-//		editCourseController.setCourseId(getCourseId());
-//		
-//		
-//		m.openNewWindow("views/edit_course.fxml", event);
-//        controller.setFormCourseName(getCourseName()); // nameText val queried from db to display in input field
-
-        // update data in DB -- manipulate fx:id for each edit btn, "rowId+edit"
 		for (Node child : courseInfo.getChildren()) {
             child.setVisible(!child.isVisible());
         }
-		
 		
 	}
 	
@@ -114,6 +98,14 @@ public class CourseItemController implements Initializable {
     	m.changeScene("views/homepage.fxml");
     	
     }
+	
+	@FXML
+    void cancelEditBtnAction(ActionEvent event) {
+		for (Node child : courseInfo.getChildren()) {
+            child.setVisible(!child.isVisible());
+        }
+    	
+    }
 
 	
 	@FXML
@@ -122,13 +114,7 @@ public class CourseItemController implements Initializable {
 		
 		Main m = new Main();
     	m.openNewWindow("views/homepage.fxml", event);
-		
-		System.out.println("DEL BTN Parent");
-		Pane pane = (Pane) deleteBtn.getParent();
-		
-//		System.out.println(pane.getChildren());
-		System.out.println(getCourseName());
-		
+			
 	}
     
 	@Override
