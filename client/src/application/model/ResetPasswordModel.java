@@ -38,8 +38,7 @@ public class ResetPasswordModel {
 			verification.setString(2, answer);
 			
 			
-			ResultSet resultSet = verification.executeQuery();
-			verification.close();
+			ResultSet resultSet = verification.executeQuery();		
 			
 			//if it doesnt match then we can throw a false
 			if(!resultSet.next()) {
@@ -55,6 +54,7 @@ public class ResetPasswordModel {
 			statement.setString(2, user);
 			statement.executeUpdate();
 			statement.close();
+			verification.close();
 			
 			return true;
 			
