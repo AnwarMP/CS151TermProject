@@ -42,7 +42,6 @@ public class SignUpModel {
 				sql1.append(pass);
 				sql1.append("');");
 		        
-				System.out.println(sql1.toString());
 		    	// DB Command
 				Statement stmt = connection.createStatement();
 				
@@ -91,7 +90,6 @@ public class SignUpModel {
 				sql1.append(answer);
 				sql1.append("');");
 		        
-				System.out.println(sql1.toString());
 		    	// DB Command
 				Statement stmt = connection.createStatement();
 				
