@@ -1,7 +1,6 @@
 package application.model;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,15 +18,9 @@ public class CourseModel {
 		
 	}
 	
-	/**
-	 * Create unique courses table for each user and add courses to that table 
-	 * @param courseName
-	 * @throws SQLException
-	 */
-	public void createCourse(String courseName) throws SQLException {
-		
-    	Statement stmt = connection.createStatement();
-    	 
+	// create user's course table
+	public void setupHomepage() throws SQLException {
+		Statement stmt = connection.createStatement();
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
     	
 		// Create username_courses table if not exist
@@ -40,6 +33,18 @@ public class CourseModel {
 				+ ");");
         
     	stmt.executeUpdate(sql1.toString());
+    	stmt.close();
+    	res.close();
+    	connection.close();
+	}
+	/**
+	 * Create unique courses table for each user and add courses to that table 
+	 * @param courseName
+	 * @throws SQLException
+	 */
+	public void createCourse(String courseName) throws SQLException {
+		
+    	Statement stmt = connection.createStatement();
 
     	ResultSet res2 = stmt.executeQuery("SELECT * FROM session");
 		// insert courses into table
@@ -51,7 +56,7 @@ public class CourseModel {
     	stmt.executeUpdate(sql2.toString());
 
     	stmt.close();
-    	res.close();
+//    	res.close();
     	res2.close();
     	connection.close();
 	}

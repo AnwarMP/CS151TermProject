@@ -47,7 +47,6 @@ public class LoginController implements Initializable {
 	@FXML
 	private Hyperlink forgotPwBtn;
 	
-	private Connection conn;
 	public LoginModel loginModel = new LoginModel();
 	
 	@FXML

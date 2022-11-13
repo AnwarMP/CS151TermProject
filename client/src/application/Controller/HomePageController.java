@@ -5,33 +5,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import application.Main;
 import application.SQLiteConnection;
 import application.model.CourseModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
 public class HomePageController implements Initializable {
 	
@@ -50,6 +37,8 @@ public class HomePageController implements Initializable {
 	
 	private int row = 0, col = 1, i = 0;
 	
+	private CourseModel courseModel;
+	
 	private Connection conn;
 	private Statement stmt;
 	
@@ -62,8 +51,13 @@ public class HomePageController implements Initializable {
 	// adding course item component to list
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
+		courseModel = new CourseModel();
+
 		List<CourseModel> courses;
 		try {
+			// create user course table
+			courseModel.setupHomepage();
+			// homepage UI
 			courses = new ArrayList<CourseModel>(setUpCourses());
 			
 			while(row < courseLayout.getRowConstraints().size()) {
@@ -73,8 +67,7 @@ public class HomePageController implements Initializable {
 					
 					courseController.setData(courses.get(i));
 					courseLayout.add(m.getPane(), col, row);
-					// if dleteBtn is clicked, remove course from courseLayout, decrement col
-					//courseLayout.getChildren().remove(i)
+
 					col++;
 					i++;
 				}
@@ -105,7 +98,6 @@ public class HomePageController implements Initializable {
 		conn = SQLiteConnection.Connector();
 		stmt = conn.createStatement();
 		List<CourseModel> list = new ArrayList<CourseModel>();
-		CourseModel courseModel;
 		
 		ResultSet sessionRes = stmt.executeQuery("SELECT * FROM session");
 		

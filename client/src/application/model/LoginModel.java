@@ -57,7 +57,7 @@ public class LoginModel {
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user);
 			preparedStatement.setString(2, pass);
-			
+
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
