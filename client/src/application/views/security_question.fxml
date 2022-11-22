@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.ResetPasswordController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.ChangeSecurityQuestion">
    <top>
       <AnchorPane maxWidth="1362.0" prefHeight="96.0" prefWidth="1362.0" style="-fx-border-color: #c7bfbf; -fx-border-radius: 20px; -fx-background-color: FFFFFF; -fx-background-radius: 20 20 20 20;" BorderPane.alignment="CENTER">
          <children>
@@ -47,17 +47,17 @@
    <center>
       <AnchorPane prefHeight="826.0" prefWidth="748.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="500.0" layoutY="320.0" text="Select a security question">
+            <Label layoutX="500.0" layoutY="320.0" text="Select a new security question">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="500.0" layoutY="243.0" prefHeight="26.0" prefWidth="185.0" text="Re-enter Password : ">
+            <Label layoutX="500.0" layoutY="243.0" prefHeight="26.0" prefWidth="185.0" text="Password">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="500.0" layoutY="167.0" prefHeight="44.0" prefWidth="147.0" text="New Password : ">
+            <Label layoutX="500.0" layoutY="167.0" prefHeight="44.0" prefWidth="147.0" text="Username">
                <font>
                   <Font size="20.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <ComboBox fx:id="securityBox" layoutX="750.0" layoutY="320.0" prefWidth="200.0" />
+            <ComboBox fx:id="securityBox" layoutX="774.0" layoutY="320.0" prefWidth="200.0" />
             <TextField fx:id="answerTextField" layoutX="700.0" layoutY="385.0" promptText="Enter answer">
                <font>
                   <Font size="20.0" />
@@ -78,17 +78,17 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <PasswordField fx:id="newPasswordField" layoutX="700.0" layoutY="167.0" promptText="Enter new password">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </PasswordField>
-            <PasswordField fx:id="reenterPasswordField" layoutX="700.0" layoutY="235.0" promptText="Reenter new password">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </PasswordField>
             <Label fx:id="emptyFields" layoutX="699.0" layoutY="444.0" text="Please fill out all fields" />
+            <PasswordField fx:id="password" layoutX="701.0" layoutY="237.0" prefHeight="40.0" prefWidth="278.0" promptText="Enter your password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="username" layoutX="698.0" layoutY="169.0" prefHeight="27.0" prefWidth="284.0" promptText="Enter your username">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </center>

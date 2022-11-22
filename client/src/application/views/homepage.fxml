@@ -19,6 +19,18 @@
    <top>
       <AnchorPane maxWidth="1362.0" prefHeight="96.0" prefWidth="1362.0" style="-fx-border-color: #c7bfbf; -fx-border-radius: 20px; -fx-background-color: FFFFFF; -fx-background-radius: 20 20 20 20;" BorderPane.alignment="CENTER">
          <children>
+         <Button fx:id="accountPage" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#accountSettingsOnAction">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/avatar.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
              <Button fx:id="logoutBtn" layoutX="1125.0" layoutY="26.0" mnemonicParsing="false" onAction="#logoutBtnOnAction" prefHeight="45.0" prefWidth="131.0" style="-fx-background-color: #18a0fb;" text="Log out" textFill="WHITE" AnchorPane.leftAnchor="1125.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="25.0">
                <font>
                   <Font name="Arial Bold" size="22.0" />
@@ -29,11 +41,6 @@
                   <Image url="@../img/PDlogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="securityBox" layoutX="920.0" layoutY="30.0" mnemonicParsing="false" text="Reset Password" onAction="#resetPasswordBtnAction">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
          </children>
          <BorderPane.margin>
             <Insets top="15.0" />
