@@ -36,11 +36,15 @@
                   <Font name="Arial Bold" size="22.0" />
                </font>
             </Button>
-            <ImageView fitHeight="57.0" fitWidth="118.0" layoutX="31.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="25.0">
-               <image>
-                  <Image url="@../img/PDlogo.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="homeButton" layoutY="5.0" mnemonicParsing="false" onAction="#homeBtnOnAction" style="-fx-background-color: fffff;">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/PDlogo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
          <BorderPane.margin>
             <Insets top="15.0" />

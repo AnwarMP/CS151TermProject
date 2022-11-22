@@ -37,6 +37,9 @@ public class ChangeUsername implements Initializable{
 	private Button logoutBtn; 
 	
 	@FXML
+	private Button homeButton;
+	
+	@FXML
 	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
 		Main m = new Main();
 		m.changeScene("views/AccountPage.fxml");
@@ -51,6 +54,12 @@ public class ChangeUsername implements Initializable{
 		Main m = new Main();
 		m.changeScene("views/change_username.fxml");
 	}
+	
+	public void homeBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/homepage.fxml");
+	}
+
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {

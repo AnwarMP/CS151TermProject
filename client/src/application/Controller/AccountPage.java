@@ -35,10 +35,19 @@ public class AccountPage implements Initializable {
 	@FXML
 	private Button changeSecQuestion; 
 	
+	@FXML
+	private Button homePage;
+	
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
 	}
+	
+	public void homeBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/homepage.fxml");
+	}
+
 	
 	@FXML
 	public void changeUsernameOnAction(ActionEvent event) throws IOException {
