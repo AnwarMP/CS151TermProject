@@ -46,6 +46,11 @@ public class ResetPasswordController implements Initializable {
 	@FXML
 	private Button logoutBtn; 
 	
+	@FXML
+	private Button accountPage;
+	
+	@FXML
+	private Button homeButton;
 	
 	public ResetPasswordModel resetModel = new ResetPasswordModel(); 
 	
@@ -53,6 +58,11 @@ public class ResetPasswordController implements Initializable {
 	private void doneBtnAction(ActionEvent event) throws IOException {
 	//	checkTextFields();
 		updatePassword();
+	}
+	
+	public void homeBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/homepage.fxml");
 	}
 	
 	public void updatePassword() throws IOException {
@@ -94,6 +104,12 @@ public class ResetPasswordController implements Initializable {
 	public void myCoursesBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/homepage.fxml");
+	}
+	
+	@FXML
+	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
+		Main m = new Main();
+		m.changeScene("views/AccountPage.fxml");
 	}
 	
 	public void checkTextFields() throws IOException{

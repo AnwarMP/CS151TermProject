@@ -34,6 +34,12 @@ public class HomePageController implements Initializable {
 	@FXML
 	private Pane courseBackground;
 	
+	@FXML
+	private Button accountPage;
+	
+	@FXML
+	private Button homeButton;
+	
 	
 	private int row = 0, col = 1, i = 0;
 	
@@ -45,6 +51,11 @@ public class HomePageController implements Initializable {
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
+	}
+	
+	public void homeBtnOnAction(ActionEvent event) throws IOException {
+		Main m = new Main();
+		m.changeScene("views/homepage.fxml");
 	}
 
 
@@ -93,7 +104,12 @@ public class HomePageController implements Initializable {
 		m.openNewWindow("views/reset_password.fxml", event);
 	}
 	
-
+	@FXML
+	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
+		Main m = new Main();
+		m.changeScene("views/AccountPage.fxml");
+	}
+	
 	private List<CourseModel> setUpCourses() throws SQLException {	
 		conn = SQLiteConnection.Connector();
 		stmt = conn.createStatement();
