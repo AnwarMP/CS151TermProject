@@ -8,41 +8,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="courseBackground" prefHeight="194.0" prefWidth="406.0" style="-fx-background-color: #18a0fb; -fx-background-radius: 10 10 10 10; -fx-border-color: black; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CourseItemController">
+<Pane fx:id="courseItem" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="194.0" prefWidth="406.0" style="-fx-background-color: #18a0fb; -fx-background-radius: 10 10 10 10; -fx-border-color: black; -fx-border-radius: 10 10 10 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CourseItemController">
    <children>
-      <Pane fx:id="courseInfo" layoutY="94.0" prefHeight="101.0" prefWidth="406.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 0 0 10 10; -fx-border-color: black; -fx-border-radius: 0 0 10 10;">
+      <Pane fx:id="selectedPane" prefHeight="200.0" prefWidth="406.0">
          <children>
-            <Label fx:id="courseId" layoutX="82.0" layoutY="61.0" text="1" visible="true" textFill="#838383">
+            <Button fx:id="selectCourseBtn" mnemonicParsing="false" onAction="#selectCourseAction" opacity="0.0" prefHeight="194.0" prefWidth="406.0" visible="true" />
+         </children>
+      </Pane>
+      <Pane fx:id="courseInfo" layoutY="94.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="101.0" prefWidth="406.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 0 0 10 10; -fx-border-color: black; -fx-border-radius: 0 0 10 10;">
+         <children>
+            <Label fx:id="courseId" layoutX="82.0" layoutY="61.0" text="1" textFill="#838383" visible="true">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="editLabel" layoutX="21.0" layoutY="10.0" visible="false" text="Course name:">
+            <Label fx:id="editLabel" layoutX="21.0" layoutY="10.0" text="Course name:" visible="false">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="saveEditBtn" layoutX="337.0" layoutY="65.0" visible="false" onAction="#saveEditBtnAction" mnemonicParsing="false" prefHeight="22.0" prefWidth="49.0" style="-fx-background-color: #18a0fb;" text="Save" textFill="WHITE">
+            <Button fx:id="saveEditBtn" layoutX="337.0" layoutY="65.0" mnemonicParsing="false" onAction="#saveEditBtnAction" prefHeight="22.0" prefWidth="49.0" style="-fx-background-color: #18a0fb;" text="Save" textFill="WHITE" visible="false">
                <font>
                   <Font name="Arial" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="cancelEditBtn" layoutX="274.0" layoutY="65.0" visible="false" mnemonicParsing="false" onAction="#cancelEditBtnAction" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: #18a0fb; -fx-border-radius: 3px;" text="Cancel" textFill="#18a0fb">
+            <Button fx:id="cancelEditBtn" layoutX="274.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelEditBtnAction" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: #18a0fb; -fx-border-radius: 3px;" text="Cancel" textFill="#18a0fb" visible="false">
                <font>
                   <Font name="Arial" size="11.0" />
                </font>
             </Button>
-            <Label fx:id="courseName" layoutX="20.0" layoutY="31.0" visible="true" text="Science">
+            <Label fx:id="courseName" layoutX="20.0" layoutY="31.0" text="Science" visible="true">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="editTextField" layoutX="20.0" layoutY="31.0" visible="false" prefHeight="23.0" prefWidth="366.0" promptText="Enter course name">
+            <TextField fx:id="editTextField" layoutX="20.0" layoutY="31.0" prefHeight="23.0" prefWidth="366.0" promptText="Enter course name" visible="false">
                <font>
                   <Font size="11.0" />
                </font>
             </TextField>
-            <Label layoutX="20.0" layoutY="61.0" text="Course #" visible="true" textFill="#838383">
+            <Label layoutX="20.0" layoutY="61.0" text="Course #" textFill="#838383" visible="true">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -53,7 +58,7 @@
             <Image url="@../img/trashIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="337.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="editIcon" fitHeight="23.0" fitWidth="21.0" layoutX="337.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/editIcon.png" />
          </image>
