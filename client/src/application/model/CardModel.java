@@ -218,38 +218,6 @@ public class CardModel {
     	connection.close();
 	}
 	
-	public void deleteCourse(int courseId, String courseName) throws SQLException{
-		Statement stmt = connection.createStatement();
-
-    	// delete course from table
-    	StringBuffer sql1 = new StringBuffer("DROP TABLE ");
-    	sql1.append(courseName);
-    	sql1.append("_detail");
-		System.out.println(sql1.toString());
-    	stmt.executeUpdate(sql1.toString());
-    	
-    	System.out.println("SUCCESS DROP COURSE DETAIL TABLE");
-        
-    	ResultSet res = stmt.executeQuery("SELECT * FROM session");
-		// delete course from table
-    	StringBuffer sql2 = new StringBuffer("DELETE FROM ");
-    	sql2.append(res.getString("username"));
-    	sql2.append("_courses");
-    	sql2.append(" WHERE id=");
-		sql2.append(courseId);
-		sql2.append(" AND courseName='");
-		sql2.append(courseName);
-		sql2.append("'");
-		System.out.println(sql2.toString());
-    	stmt.executeUpdate(sql2.toString());
-    	
-    	System.out.println("SUCCESS DELETE COURSE");
-
-    	stmt.close();
-    	res.close();
-    	connection.close();
-	}
-	
 	public void setSelectedCard(String cardName, String definition, int isLearned) throws SQLException {
 		connection = SQLiteConnection.Connector();
 		Statement stmt = connection.createStatement();
