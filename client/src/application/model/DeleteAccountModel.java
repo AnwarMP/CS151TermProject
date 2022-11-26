@@ -22,12 +22,13 @@ public class DeleteAccountModel {
 		//get username
 		Statement stmt = connection.createStatement();
 		
-		StringBuffer tableName = new StringBuffer(username);
-		tableName.append("_courses");
+		StringBuffer tableName = new StringBuffer("DROP TABLE IF EXISTS '" );
+		tableName.append(username);
+		tableName.append("_courses' ");
 		
 		
 		String query = "DELETE FROM users WHERE username = ?";
-		String dropCourses = "DROP TABLE IF EXISTS '?' ";
+		String dropCourses = "DROP TABLE IF EXISTS prodex. ? ";
 		String answerVerify = "select * from users where username = ? and password = ? and answer = ?";
 		
 		PreparedStatement statement;
@@ -54,8 +55,9 @@ public class DeleteAccountModel {
 			statement.setString(1, username);
 			statement.executeUpdate();
 			
-			PreparedStatement drop = connection.prepareStatement(dropCourses);
-			drop.setString(1, tableName.toString());
+			PreparedStatement drop = connection.prepareStatement(tableName.toString());
+			//drop.setString(1, tableName.toString());
+			drop.executeUpdate();
 			
 			drop.close();
 			statement.close();
