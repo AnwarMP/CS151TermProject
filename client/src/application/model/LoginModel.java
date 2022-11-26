@@ -50,13 +50,22 @@ public class LoginModel {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
+		// encrypt pw
+		String encryptedPw = "";
+		char[] chars = pass.toCharArray();
+		int key = 6;
+		for(char c : chars) {
+		c -= key;
+			encryptedPw += c;
+		}
+				
 		//To query the db to find a user with a matching username and password
 		String query = "select * from users where username = ? and password = ?";
 
 		try  { 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user);
-			preparedStatement.setString(2, pass);
+			preparedStatement.setString(2, encryptedPw);
 
 			resultSet = preparedStatement.executeQuery();
 			

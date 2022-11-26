@@ -48,18 +48,25 @@ public class HomePageController implements Initializable {
 	private Connection conn;
 	private Statement stmt;
 	
+	// constructor
+	public HomePageController() {
+		conn = SQLiteConnection.Connector();
+	}
+	
+	@FXML
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
 	}
-	
+
+	@FXML
 	public void homeBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/homepage.fxml");
 	}
 
 
-	// adding course item component to list
+	// render course items on loaded
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		courseModel = new CourseModel();
@@ -75,8 +82,9 @@ public class HomePageController implements Initializable {
 				while(col < courseLayout.getColumnConstraints().size() && i < courses.size()) {
 					Main m = new Main();
 					CourseItemController courseController = m.getCourseController();
-					
+
 					courseController.setData(courses.get(i));
+					
 					courseLayout.add(m.getPane(), col, row);
 
 					col++;
@@ -110,8 +118,8 @@ public class HomePageController implements Initializable {
 		m.changeScene("views/AccountPage.fxml");
 	}
 	
+	// add all courses of user to list for rendering
 	private List<CourseModel> setUpCourses() throws SQLException {	
-		conn = SQLiteConnection.Connector();
 		stmt = conn.createStatement();
 		List<CourseModel> list = new ArrayList<CourseModel>();
 		
@@ -125,7 +133,7 @@ public class HomePageController implements Initializable {
 		
         ResultSet courseResult = stmt.executeQuery(query.toString()); 
         
-        // query all results from table and add to list
+        // create list of all courses for rendering
         while (courseResult.next()) {
 	    	courseModel = new CourseModel();
 	    	courseModel.setCourseId(courseResult.getInt(1));

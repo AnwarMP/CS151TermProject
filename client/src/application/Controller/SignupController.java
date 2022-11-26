@@ -65,7 +65,7 @@ public class SignupController implements Initializable {
 			if(username.isEmpty() || pw.isEmpty() || securityBox.getValue() == null || answerTextField.getText().isEmpty()) {
 				invalidSignup.setText("Please fill out all missing information.");
 			} 
-			// mock data to check for existing accounts
+			// check for existing accounts
 			else if(!signUpModel.signUp(username, pw, answer)) {
 				invalidSignup.setText("Account already exists.");
 			}

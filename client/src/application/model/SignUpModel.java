@@ -67,6 +67,15 @@ public class SignUpModel {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
+		// encrypt pw
+		String encryptedPw = "";
+		char[] chars = pass.toCharArray();
+		int key = 6;
+		for(char c : chars) {
+		c -= key;
+			encryptedPw += c;
+		}
+				
 		//To query the db to find a user with a matching username and password
 		String query = "select * from users where username = ?";
 
@@ -85,7 +94,7 @@ public class SignUpModel {
 
 				sql1.append(user);	// query from db
 				sql1.append("', '");
-				sql1.append(pass);
+				sql1.append(encryptedPw);
 				sql1.append("', '");
 				sql1.append(answer);
 				sql1.append("');");

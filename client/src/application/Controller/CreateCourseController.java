@@ -1,14 +1,9 @@
 package application.Controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import application.Main;
-import application.SQLiteConnection;
 import application.model.CourseModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
