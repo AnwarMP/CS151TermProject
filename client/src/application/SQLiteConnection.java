@@ -32,7 +32,7 @@ public class SQLiteConnection {
 	        sql = "CREATE TABLE IF NOT EXISTS selected_course (\n"
 	                + " id			INT PRIMARY KEY,\n"
 	                + "	courseName	TEXT	NOT NULL,\n"
-	                + "	courseNumber	INT	PRIMARY KEY\n"
+	                + "	courseNumber	INT \n"
 	                + ");";	
 	        
 	        stmt.executeUpdate(sql); 

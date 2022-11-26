@@ -141,17 +141,17 @@ public class CourseModel {
     	
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
 		// delete course from table
-    	StringBuffer sql2 = new StringBuffer("DELETE FROM ");
-    	sql2.append(res.getString("username"));
-    	sql2.append("_courses");
-    	sql2.append(" WHERE id=");
-		sql2.append(courseId);
-		sql2.append(" AND courseName='");
-		sql2.append(courseName);
-		sql2.append("'");
-		System.out.println(sql2.toString());
-    	stmt.executeUpdate(sql2.toString());
-    
+
+    	StringBuffer sql = new StringBuffer("DELETE FROM ");
+    	sql.append(res.getString("username"));
+    	sql.append("_courses");
+    	sql.append(" WHERE id=");
+		sql.append(courseId);
+		sql.append(" AND courseName='");
+		sql.append(courseName);
+		sql.append("'");
+    	stmt.executeUpdate(sql.toString());
+
     	stmt.close();
     	res.close();
     	connection.close();

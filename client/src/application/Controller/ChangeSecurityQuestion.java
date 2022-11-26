@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.model.ResetPasswordModel;
+import application.model.ResetSecurityQuestionModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,6 +43,9 @@ public class ChangeSecurityQuestion implements Initializable {
 	@FXML
 	private Button homeButton;
 	
+	public ResetSecurityQuestionModel resetModel = new ResetSecurityQuestionModel(); 
+
+	
 	@FXML
 	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
 		Main m = new Main();
@@ -59,7 +64,39 @@ public class ChangeSecurityQuestion implements Initializable {
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
+		updatePassword();
 	
+	}
+	
+	public void updatePassword() throws IOException {
+		Main m = new Main();
+
+		String user = username.getText();
+		String pw = password.getText();
+		String answer = answerTextField.getText();
+		
+		
+		
+		// if missing any input value, prompt user to fill all
+		try {
+			if(user.isEmpty() || pw.isEmpty() || answer.isEmpty()) {
+				emptyFields.setText("Please fill out all missing information.");
+				//set the label to above
+			} 
+			// mock data to check for existing accounts
+			else if(!resetModel.updateSecurityAnswer(pw, user, answer)) {
+				emptyFields.setText("Incorrect information");
+				//set label above to 'wrong answer' 
+			}
+			// if username is new and all info are filled out, redirect to login
+			else {
+				m.changeScene("views/login.fxml");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

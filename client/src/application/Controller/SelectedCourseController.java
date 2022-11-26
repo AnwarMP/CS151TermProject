@@ -145,7 +145,6 @@ public class SelectedCourseController implements Initializable {
 				col = 0;
 			}
 			
-			System.out.println("LAYOUT" + notLearnedLayout.getChildren());
 		} catch (SQLException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
