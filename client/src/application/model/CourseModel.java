@@ -98,11 +98,7 @@ public class CourseModel {
 		sql.append(" AND courseName='");
 		sql.append(courseName);
 		sql.append("'");
-		System.out.println(sql.toString());
     	stmt.executeUpdate(sql.toString());
-    	
-    	System.out.println("SUCCESS");
-
     	stmt.close();
     	res.close();
     	connection.close();

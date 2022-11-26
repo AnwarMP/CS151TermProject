@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import application.SQLiteConnection;
+import application.model.AccountPageModel;
 import application.model.ResetPasswordModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class AccountPage implements Initializable {
 	private Label accountName;
 	
 	@FXML
-	private Button changeUsername; 
+	private Button DeleteAccount; 
 	
 	@FXML
 	private Button changePassword; 
@@ -38,6 +39,14 @@ public class AccountPage implements Initializable {
 	@FXML
 	private Button homePage;
 	
+	@FXML
+	private Button logoutBtn;
+	
+	@FXML
+	private Button homeButton;
+	
+	public AccountPageModel accountPage = new AccountPageModel(); 
+
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
@@ -75,8 +84,8 @@ public class AccountPage implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+		String account = "something";
+		accountName.setText(account);
 	}
 	
 }

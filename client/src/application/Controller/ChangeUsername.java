@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.model.DeleteAccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,10 +20,10 @@ public class ChangeUsername implements Initializable{
 	private Button doneBtn;
 	
 	@FXML
-	private TextField newUsername;
+	private TextField Username;
 	
 	@FXML
-	private TextField reenterNewUsername;
+	private TextField Password;
 	
 	@FXML
 	private ComboBox<String> securityBox;
@@ -38,6 +39,8 @@ public class ChangeUsername implements Initializable{
 	
 	@FXML
 	private Button homeButton;
+	
+	private DeleteAccountModel model = new DeleteAccountModel();
 	
 	@FXML
 	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
@@ -63,7 +66,40 @@ public class ChangeUsername implements Initializable{
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
+		updatePassword();
+	}
 	
+	public void updatePassword() throws IOException {
+		Main m = new Main();
+
+		String user= Username.getText();
+		String pw = Password.getText();
+		String answer = answerTextField.getText();
+		
+		
+		
+		
+		
+		// if missing any input value, prompt user to fill all
+		try {
+			if(user.isEmpty() || pw.isEmpty() || answerTextField.getText().isEmpty()) {
+				emptyFields.setText("Please fill out all missing information.");
+				//set the label to above
+			} 
+			// mock data to check for existing accounts
+			else if(!model.deleteAccount(pw, user, answer)) {
+				emptyFields.setText("Incorrect information");
+				//set label above to 'wrong answer' 
+			}
+			// if username is new and all info are filled out, redirect to login
+			else {
+				m.changeScene("views/login.fxml");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountPage">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountPage">
  	<top>
       <AnchorPane maxWidth="1362.0" prefHeight="96.0" prefWidth="1362.0" style="-fx-border-color: #c7bfbf; -fx-border-radius: 20px; -fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="accountPage" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#accountSettingsOnAction">
+            <Button layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#accountSettingsOnAction">
                <font>
                   <Font size="9.0" />
                </font>
@@ -48,22 +48,22 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -fx-control-inner-background;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="changeUsername" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#changeUsernameOnAction" text="Change Username" textAlignment="CENTER">
+            <Button fx:id="DeleteAccount" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#changeUsernameOnAction" text="Delete Account" textAlignment="CENTER">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Button fx:id="changePassword" layoutX="600.0" layoutY="363.0" mnemonicParsing="false" text="Change Password" onAction="#changePasswordOnAction">
+            <Button fx:id="changePassword" layoutX="600.0" layoutY="363.0" mnemonicParsing="false" onAction="#changePasswordOnAction" text="Change Password">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Label layoutX="571.0" layoutY="175.0" text="Account Name">
+            <Label fx:id="accountName" layoutX="571.0" layoutY="175.0" text="Account Name">
                <font>
                   <Font size="49.0" />
                </font>
             </Label>
-            <Button fx:id="changeSecQuestion" layoutX="559.0" layoutY="443.0" mnemonicParsing="false" text="Change Security Question" onAction="#changeSecQuestionOnAction">
+            <Button fx:id="changeSecQuestion" layoutX="559.0" layoutY="443.0" mnemonicParsing="false" onAction="#changeSecQuestionOnAction" text="Change Security Question">
                <font>
                   <Font size="26.0" />
                </font>

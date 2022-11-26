@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.ChangeUsername">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.ChangeUsername">
    <top>
       <AnchorPane maxWidth="1362.0" prefHeight="96.0" prefWidth="1362.0" style="-fx-border-color: #c7bfbf; -fx-border-radius: 20px; -fx-background-color: FFFFFF; -fx-background-radius: 20 20 20 20;" BorderPane.alignment="CENTER">
          <children>
-         <Button fx:id="accountPage" layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#accountSettingsOnAction">
+         <Button layoutX="1060.0" layoutY="30.0" mnemonicParsing="false" onAction="#accountSettingsOnAction">
                <font>
                   <Font size="9.0" />
                </font>
@@ -55,17 +55,17 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="500.0" layoutY="243.0" prefHeight="26.0" prefWidth="185.0" text="Re-enter Username : ">
+            <Label layoutX="500.0" layoutY="243.0" prefHeight="26.0" prefWidth="185.0" text="Password:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="500.0" layoutY="167.0" prefHeight="44.0" prefWidth="147.0" text="New Username : ">
+            <Label layoutX="500.0" layoutY="167.0" prefHeight="44.0" prefWidth="147.0" text="Username:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="doneBtn" layoutX="670.0" layoutY="500.0" mnemonicParsing="false" onAction="#doneBtnAction" text="Done">
+            <Button fx:id="doneBtn" layoutX="670.0" layoutY="500.0" mnemonicParsing="false" onAction="#doneBtnAction" text="Delete Account">
                <font>
                   <Font size="20.0" />
                </font>
@@ -76,12 +76,12 @@
                </font>
             </Label>
             <Label fx:id="emptyFields" layoutX="699.0" layoutY="444.0" text="Please fill out all fields" />
-            <TextField fx:id="newUsername" layoutX="680.0" layoutY="167.0" prefHeight="41.0" prefWidth="329.0" promptText="Enter your desired new username">
+            <TextField fx:id="Username" layoutX="680.0" layoutY="167.0" prefHeight="41.0" prefWidth="329.0" promptText="Enter Username">
                <font>
                   <Font size="21.0" />
                </font>
             </TextField>
-            <TextField fx:id="reenterNewUsername" layoutX="690.0" layoutY="237.0" prefHeight="41.0" prefWidth="353.0" promptText="Reenter your desired new username">
+            <TextField fx:id="Password" layoutX="690.0" layoutY="237.0" prefHeight="41.0" prefWidth="353.0" promptText="Enter Password">
                <font>
                   <Font size="21.0" />
                </font>
