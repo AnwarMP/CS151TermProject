@@ -31,11 +31,11 @@
                   </ImageView>
                </graphic>
             </Button>
-             <Button fx:id="logoutBtn" layoutX="1125.0" layoutY="26.0" mnemonicParsing="false" onAction="#logoutBtnOnAction" prefHeight="45.0" prefWidth="131.0" style="-fx-background-color: #18a0fb;" text="Log out" textFill="WHITE" AnchorPane.leftAnchor="1125.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="25.0">
-               <font>
-                  <Font name="Arial Bold" size="22.0" />
-               </font>
-            </Button>
+            <Button fx:id="logoutBtn" layoutX="1125.0" layoutY="26.0" mnemonicParsing="false" onAction="#logoutBtnOnAction" prefHeight="45.0" prefWidth="131.0" style="-fx-background-color: #18a0fb;" text="Log out" textFill="WHITE" AnchorPane.leftAnchor="1125.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="25.0">
+            	<font>
+                   <Font name="Arial Bold" size="22.0" />
+                </font>
+             </Button>
             <Button fx:id="homeButton" layoutY="5.0" mnemonicParsing="false" onAction="#homeBtnOnAction" style="-fx-background-color: fffff;">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -58,9 +58,9 @@
                <content>
                   <GridPane fx:id="courseLayout" hgap="50.0" prefHeight="944.0" prefWidth="1340.0" vgap="50.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.333" minWidth="10.0" prefWidth="453.333" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.333" minWidth="10.0" prefWidth="453.333" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.333" minWidth="10.0" prefWidth="453.333" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="406.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="406.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="406.0" minWidth="10.0" prefWidth="406.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

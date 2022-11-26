@@ -2,20 +2,15 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.SQLiteConnection;
 import application.model.CourseModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -25,10 +20,13 @@ import javafx.scene.layout.Pane;
 public class CourseItemController implements Initializable {
 
 	@FXML
-	private Pane courseBackground;
+	private Pane courseItem;
 	
 	@FXML
 	private Pane courseInfo;
+	
+	@FXML
+	private Pane selectedPane;
 	
     @FXML
     private Label courseName;
@@ -52,7 +50,13 @@ public class CourseItemController implements Initializable {
     private TextField editTextField;
     
     @FXML
+    private Button selectCourseBtn;
+    
+    @FXML
     private Label editLabel;
+    
+    @FXML
+    private ImageView editIcon;
     
     private CourseModel courseModel = new CourseModel();
     
@@ -69,6 +73,14 @@ public class CourseItemController implements Initializable {
     	return courseId.getText();
     }
     
+    @FXML
+    private void selectCourseAction(ActionEvent event) throws IOException, SQLException {
+    	Main m = new Main();
+    	courseModel.setSelectedCourse(Integer.parseInt(getCourseId()), getCourseName());
+    	m.openNewWindow("views/selected_course.fxml", event);
+    	
+    }
+
 	
 	@FXML
 	private void editCourseBtnAction(ActionEvent event) throws IOException, SQLException {
@@ -86,7 +98,7 @@ public class CourseItemController implements Initializable {
 	 * @throws SQLException
 	 */
 	@FXML
-    void saveEditBtnAction(ActionEvent event) throws IOException, NumberFormatException, SQLException {
+	private void saveEditBtnAction(ActionEvent event) throws IOException, NumberFormatException, SQLException {
     	
     	Main m = new Main();
     	
@@ -100,11 +112,11 @@ public class CourseItemController implements Initializable {
     }
 	
 	@FXML
-    void cancelEditBtnAction(ActionEvent event) {
+    private void cancelEditBtnAction(ActionEvent event) throws IOException {
+    	Main m = new Main();
 		for (Node child : courseInfo.getChildren()) {
             child.setVisible(!child.isVisible());
         }
-    	
     }
 
 	
@@ -119,6 +131,8 @@ public class CourseItemController implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
 		
 		
 	}

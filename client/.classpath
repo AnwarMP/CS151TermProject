@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="/Users/anwarmujeeb/Desktop/ProDex/CS151TermProject/sqlite-jdbc-3.39.3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/tutran/git/CS151TermProject/sqlite-jdbc-3.39.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
