@@ -71,18 +71,9 @@ public class LoginController implements Initializable {
 		Main m = new Main();
 		String username = usernameTextField.getText();
 		String pw = passwordField.getText();
-		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = pw.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-			c -= key;
-			encryptedPw += c;
-		}
 				
 		try {
-			if(loginModel.isLogin(usernameTextField.getText(), encryptedPw)) {
+			if(loginModel.isLogin(usernameTextField.getText(), pw)) {
 				loginModel.setSession(username);
 				invalidLogin.setText("Success");
 				m.changeScene("views/homepage.fxml");

@@ -73,12 +73,13 @@ public class ResetPasswordController implements Initializable {
 			if(repw.isEmpty() || pw.isEmpty() || answerTextField.getText().isEmpty()) {
 				emptyFields.setText("Please fill out all missing information.");
 				//set the label to above
-			} 
+			}
 			// mock data to check for existing accounts
-			else if(!resetModel.updatePassword(pw, repw, answer)) {
+			else if(!resetModel.updatePassword(pw, answer) || !repw.equals(pw)) {
 				emptyFields.setText("Incorrect information");
 				//set label above to 'wrong answer' 
 			}
+			
 			// if username is new and all info are filled out, redirect to login
 			else {
 				m.changeScene("views/login.fxml");

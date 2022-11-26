@@ -16,7 +16,16 @@ public class ResetPasswordModel {
 		if(connection == null) System.exit(1);
 	}
 	
-	public boolean updatePassword(String password, String rpassword, String answer) throws SQLException {
+	public boolean updatePassword(String password, String answer) throws SQLException {
+		
+		// encrypt pw
+		String encryptedPw = "";
+		char[] chars = password.toCharArray();
+		int key = 6;
+		for(char c : chars) {
+			c -= key;
+			encryptedPw += c;
+		}
 		
 		//get username
 		Statement stmt = connection.createStatement();
@@ -26,9 +35,6 @@ public class ResetPasswordModel {
 		
 		String query = "UPDATE users SET password=? WHERE username=?";
 		String answerVerify = "select * from users where username=? AND answer=?";
-		
-		//Check if passwords match 
-		if(!checkPassword(password, rpassword)) return false;
 		
 		PreparedStatement statement;
 		try {
@@ -50,7 +56,7 @@ public class ResetPasswordModel {
 			
 			//if it does match we can continue 
 			statement = connection.prepareStatement(query);
-			statement.setString(1, password);
+			statement.setString(1, encryptedPw);
 			statement.setString(2, user);
 			statement.executeUpdate();
 			statement.close();

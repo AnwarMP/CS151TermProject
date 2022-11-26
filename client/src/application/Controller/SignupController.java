@@ -60,22 +60,13 @@ public class SignupController implements Initializable {
 		String pw = passwordField.getText();
 		String answer = answerTextField.getText();
 		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = pw.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-			c -= key;
-			encryptedPw += c;
-		}
-		
 		// if missing any input value, prompt user to fill all
 		try {
 			if(username.isEmpty() || pw.isEmpty() || securityBox.getValue() == null || answerTextField.getText().isEmpty()) {
 				invalidSignup.setText("Please fill out all missing information.");
 			} 
 			// check for existing accounts
-			else if(!signUpModel.signUp(username, encryptedPw, answer)) {
+			else if(!signUpModel.signUp(username, pw, answer)) {
 				invalidSignup.setText("Account already exists.");
 			}
 			// if username is new and all info are filled out, redirect to login

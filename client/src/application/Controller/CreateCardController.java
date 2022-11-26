@@ -80,7 +80,7 @@ public class CreateCardController implements Initializable  {
         	Main m = new Main();
         	m.openNewWindow("views/selected_course.fxml", event);
     	} else {
-    		errorMsg.setText("Please enter the term name and/or definition");
+    		errorMsg.setText("Please enter the term name and definition");
     	}	
     }
     
