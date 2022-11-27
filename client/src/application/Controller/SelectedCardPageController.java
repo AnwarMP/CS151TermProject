@@ -2,10 +2,7 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import application.Main;
@@ -26,7 +23,6 @@ public class SelectedCardPageController implements Initializable {
 
     @FXML
     private AnchorPane cardRegion;
-
     
 	private Connection conn;
 	private Statement stmt;
@@ -40,7 +36,11 @@ public class SelectedCardPageController implements Initializable {
 	}
 	
 
-	// set up selected card info for rendering
+	/**
+	 * Set up selected card info for rendering
+	 * @return
+	 * @throws SQLException
+	 */
 	private CardModel setUpSelectedCard() throws SQLException {	
 		stmt = conn.createStatement();
 		
@@ -49,7 +49,6 @@ public class SelectedCardPageController implements Initializable {
 	    cardModel.setTermName(selectedCardRes.getString("cardName"));
 	    cardModel.setTermDefinition(selectedCardRes.getString("definition"));
 	    cardModel.setIsLearned(selectedCardRes.getInt("isLearned"));
-
         
 	    selectedCardRes.close();
         stmt.close();

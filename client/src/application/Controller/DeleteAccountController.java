@@ -10,10 +10,7 @@ import application.model.AccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class DeleteAccountController implements Initializable{
 	@FXML
@@ -66,10 +63,11 @@ public class DeleteAccountController implements Initializable{
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
-		updatePassword();
+		deleteAccount();
 	}
 	
-	public void updatePassword() throws IOException {
+	// Delete account
+	public void deleteAccount() throws IOException {
 		Main m = new Main();
 
 		String user= Username.getText();

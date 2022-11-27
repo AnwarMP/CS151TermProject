@@ -75,10 +75,6 @@ public class Main extends Application {
 		return pane;
 	}
 	
-	public void setCourseController(CourseItemController courseController) {
-		this.courseController = courseController;
-	}
-	
 	public CourseItemController getCourseController() {
 		return courseController;
 	}

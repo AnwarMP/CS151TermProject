@@ -1,10 +1,6 @@
 package application.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import application.SQLiteConnection;
 
@@ -62,9 +58,9 @@ public class CardModel {
     	sql1.append("_detail (cardName, definition, isLearned)" + " VALUES ('" 
     				+ cardName + "', '" + cardDefinition + "', " + isLearned + ");");
     	
-    	System.out.println("UPDATE " + sql1.toString());
     	stmt.executeUpdate(sql1.toString());
-    					
+    	
+    	res.close();
     	stmt.close();
     	connection.close();
 	}
@@ -205,11 +201,7 @@ public class CardModel {
 		statement2.setString(2, definition);
 		
 		statement2.executeUpdate();
-		
-    	
-    	System.out.println("SUCCESS DELETE CARD");
-		
-		
+			
 		statement2.close();
 		res.close();
 		statement.close();

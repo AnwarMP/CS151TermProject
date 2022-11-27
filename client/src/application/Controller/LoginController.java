@@ -1,29 +1,15 @@
 package application.Controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.SQLiteConnection;
 import application.model.LoginModel;
 import javafx.event.ActionEvent;
 
@@ -98,15 +84,6 @@ public class LoginController implements Initializable {
 		m.changeScene("views/register.fxml");
 	}
 
-	
-	@FXML
-	public void forgotPwBtnOnAction(ActionEvent event) throws IOException {
-		Main m = new Main();
-		m.changeScene("views/reset_password.fxml");
-	}
-	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
