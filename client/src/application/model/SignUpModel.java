@@ -3,6 +3,7 @@ package application.model;
 import java.sql.*;
 
 import application.SQLiteConnection;
+import edu.sjsu.yazdankhah.crypto.util.PassUtil;
 
 public class SignUpModel {
 	Connection connection;
@@ -23,14 +24,8 @@ public class SignUpModel {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = pass.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-		c -= key;
-			encryptedPw += c;
-		}
+		PassUtil passUtil = new PassUtil();
+		String encryptedPass = passUtil.encrypt(pass);
 				
 		//To query the db to find a user with a matching username and password
 		String query = "select * from users where username = ?";
@@ -50,7 +45,7 @@ public class SignUpModel {
 
 				sql1.append(user);	// query from db
 				sql1.append("', '");
-				sql1.append(encryptedPw);
+				sql1.append(encryptedPass);
 				sql1.append("', '");
 				sql1.append(answer);
 				sql1.append("');");
