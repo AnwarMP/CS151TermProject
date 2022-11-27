@@ -10,11 +10,7 @@ import application.model.AccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 
 
 public class ChangeSecurityQuestion implements Initializable {
@@ -63,18 +59,15 @@ public class ChangeSecurityQuestion implements Initializable {
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
-		updatePassword();
-	
+		updateSecurityAnswer();
 	}
 	
-	public void updatePassword() throws IOException {
+	public void updateSecurityAnswer() throws IOException {
 		Main m = new Main();
 
 		String user = username.getText();
 		String pw = password.getText();
 		String answer = answerTextField.getText();
-		
-		
 		
 		// if missing any input value, prompt user to fill all
 		try {

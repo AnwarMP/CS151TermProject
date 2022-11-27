@@ -40,6 +40,7 @@ public class CardItemController implements Initializable {
 		cardModel = new CardModel();
 	}
 	
+	// Set data of the current index card component
 	public void setData(CardModel card) {
 		termName.setText(card.getTermName());
 		termDefinition.setText(card.getTermDefinition());
@@ -58,12 +59,13 @@ public class CardItemController implements Initializable {
     	return isLearned.getText();
     }
     
-	 @FXML
-	 private void selectCardAction(ActionEvent event) throws IOException, SQLException {
-		 Main m = new Main();
-		 cardModel.setSelectedCard(getTermName(), getTermDefinition(), Integer.parseInt(getIsLearned()));
-		 m.openNewWindow("views/selected_card_page.fxml", event);
-	  }
+    // Set the selected card
+	@FXML
+	private void selectCardAction(ActionEvent event) throws IOException, SQLException {
+		Main m = new Main();
+		cardModel.setSelectedCard(getTermName(), getTermDefinition(), Integer.parseInt(getIsLearned()));
+		m.openNewWindow("views/selected_card_page.fxml", event);
+	}
 
 
 	@Override

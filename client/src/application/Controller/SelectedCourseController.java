@@ -71,8 +71,12 @@ public class SelectedCourseController implements Initializable {
 		m.changeScene("views/create_card.fxml");
 	}
     
-    
-    // set up selected course for rendering
+
+    /**
+     * Set up selected course for rendering
+     * @param courseModel
+     * @throws IOException
+     */
     public void setUpSelectedCourse(CourseModel courseModel) throws IOException {
     	Main m = new Main();
 		CourseItemController courseController = m.getCourseController();
@@ -151,7 +155,12 @@ public class SelectedCourseController implements Initializable {
 		}
     }
     
-    
+    /**
+     * Set up the info for all index cards of selected course
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     private List<CardModel> setUpCards() throws SQLException, IOException {	
 		stmt = conn.createStatement();
 		List<CardModel> list = new ArrayList<CardModel>();
@@ -168,6 +177,7 @@ public class SelectedCourseController implements Initializable {
 		query.append(selectedCourseRes.getString("courseName"));
 		query.append("_detail");
 		
+		selectedCourseRes.close();
 		
         ResultSet cardResult = stmt.executeQuery(query.toString()); 
         

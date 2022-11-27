@@ -2,24 +2,16 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import application.Main;
 import application.SQLiteConnection;
 import application.model.CardModel;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -89,6 +81,7 @@ public class SelectedCardItemController implements Initializable {
     	cardModel = new CardModel();
     }
 	
+    // set data for index card
 	public void setData(CardModel card) {
 		termName.setText(card.getTermName());
 		termDefinition.setText(card.getTermDefinition());
@@ -123,7 +116,6 @@ public class SelectedCardItemController implements Initializable {
     
     @FXML
     private void cancelEditBtnAction(ActionEvent event) {
-    	
     	cardItem.getChildren().remove(editCardLayout);
     }
     
@@ -163,7 +155,7 @@ public class SelectedCardItemController implements Initializable {
     	m.openNewWindow("views/selected_course.fxml", event);
     }
     
-    // update learned status on selected
+    // Update learned status on selected
     @FXML
     private void checkIsLearned(ActionEvent event) throws SQLException {
     	if(isLearnedCheckBox.isSelected()) {

@@ -3,22 +3,14 @@ package application.Controller;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.sql.*;
+import java.util.*;
 
-import application.Main;
-import application.SQLiteConnection;
+import application.*;
 import application.model.CourseModel;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 public class HomePageController implements Initializable {
 	
@@ -66,7 +58,7 @@ public class HomePageController implements Initializable {
 	}
 
 
-	// render course items on loaded
+	// Render course items on load
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		courseModel = new CourseModel();
@@ -75,7 +67,7 @@ public class HomePageController implements Initializable {
 		try {
 			// create user course table
 			courseModel.setupHomepage();
-			// homepage UI
+
 			courses = new ArrayList<CourseModel>(setUpCourses());
 			
 			while(row < courseLayout.getRowConstraints().size()) {
@@ -118,7 +110,7 @@ public class HomePageController implements Initializable {
 		m.changeScene("views/AccountPage.fxml");
 	}
 	
-	// add all courses of user to list for rendering
+	// Add all courses of user to list for rendering
 	private List<CourseModel> setUpCourses() throws SQLException {	
 		stmt = conn.createStatement();
 		List<CourseModel> list = new ArrayList<CourseModel>();

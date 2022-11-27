@@ -8,13 +8,8 @@ import java.util.ResourceBundle;
 import application.Main;
 import application.model.AccountModel;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.*;
+import javafx.scene.control.*;
 
 
 public class ResetPasswordController implements Initializable {
@@ -52,15 +47,19 @@ public class ResetPasswordController implements Initializable {
 	
 	@FXML
 	private void doneBtnAction(ActionEvent event) throws IOException {
-	//	checkTextFields();
 		updatePassword();
 	}
 	
+	@FXML
 	public void homeBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/homepage.fxml");
 	}
 	
+	/**
+	 * Update password method
+	 * @throws IOException
+	 */
 	public void updatePassword() throws IOException {
 		Main m = new Main();
 
@@ -91,11 +90,13 @@ public class ResetPasswordController implements Initializable {
 		}
 	}
 	
+	@FXML
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/login.fxml");
 	}
 	
+	@FXML
 	public void myCoursesBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
 		m.changeScene("views/homepage.fxml");
@@ -105,23 +106,6 @@ public class ResetPasswordController implements Initializable {
 	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
 		Main m = new Main();
 		m.changeScene("views/AccountPage.fxml");
-	}
-	
-	public void checkTextFields() throws IOException{
-		Main m = new Main();
-		
-		String newPassword = newPasswordField.getText();
-		String reNewPassword = reenterPasswordField.getText();
-		
-		//if any fields are empty
-		if(newPassword.isEmpty() || reNewPassword.isEmpty() || securityBox.getValue() == null || answerTextField.getText().isEmpty()) {
-			emptyFields.setText("Please fill out all missing information.");
-		} 
-		else {
-			m.changeScene("views/login.fxml");
-		}
-		
-		
 	}
 	
 	@Override

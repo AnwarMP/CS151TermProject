@@ -12,6 +12,7 @@ public class LoginModel {
 		
 	}
 	
+	// check if db is connected
 	public boolean isDbConnected() {
 		try {
 			return !connection.isClosed();
@@ -22,6 +23,12 @@ public class LoginModel {
 		} //based on 
 	}
 	
+	/**
+	 * Set the current session with logged in username
+	 * @param user
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean setSession(String user) throws SQLException  {
 		
 		try {

@@ -47,7 +47,7 @@
                   <Font size="11.0" />
                </font>
             </TextField>
-            <Label layoutX="20.0" layoutY="61.0" text="Course #" textFill="#838383" visible="true">
+            <Label fx:id="courseIdLabel" layoutX="20.0" layoutY="61.0" text="Course #" textFill="#838383" visible="true">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

@@ -1,11 +1,7 @@
 package application.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
 import application.SQLiteConnection;
 
@@ -40,7 +36,7 @@ public class AccountModel {
 		Statement stmt = connection.createStatement();
 		ResultSet sessionRes = stmt.executeQuery("SELECT * FROM session");
 		String user = sessionRes.getString("username");
-
+		sessionRes.close();
 		
 		String query = "UPDATE users SET password=? WHERE username=?";
 		String answerVerify = "select * from users where username=? AND answer=?";
@@ -184,19 +180,15 @@ public class AccountModel {
 			System.out.println("the answer was wrong");
 			return false;
 		}
-		
+		resultSet.close();
 		
 		// delete all courses from list of courses
 		StringBuffer sql2 = new StringBuffer("SELECT * FROM ");
     	sql2.append(username);
     	sql2.append("_courses");
-		System.out.println(sql2.toString());
 		
-		resultSet.close();
 		
 		ResultSet coursesResult = stmt.executeQuery(sql2.toString());		
-		
-		System.out.println(coursesResult.getString("courseName"));
 		
 		ArrayList<String> coursesArray = new ArrayList<String>();
 		while(coursesResult.next()) {
@@ -216,7 +208,6 @@ public class AccountModel {
     	StringBuffer sql3 = new StringBuffer("DROP TABLE ");
     	sql3.append(username);
     	sql3.append("_courses");
-		System.out.println(sql3.toString());
     	stmt.executeUpdate(sql3.toString());
     	
 

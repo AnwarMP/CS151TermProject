@@ -3,10 +3,7 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import application.Main;
@@ -15,10 +12,7 @@ import application.model.CardModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class CreateCardController implements Initializable  {
 
@@ -46,13 +40,10 @@ public class CreateCardController implements Initializable  {
     
     private CardModel cardModel;
     
-    private SelectedCourseController selectedCourseController;
-    
 	private Connection conn;
 	
     public CreateCardController() throws SQLException {
     	cardModel = new CardModel();
-    	selectedCourseController = new SelectedCourseController();
     }
    
     
@@ -83,7 +74,7 @@ public class CreateCardController implements Initializable  {
     		errorMsg.setText("Please enter the term name and definition");
     	}	
     }
-    
+
     
     @FXML
     private void cancelBtnAction(ActionEvent event) throws IOException, SQLException {
@@ -91,7 +82,7 @@ public class CreateCardController implements Initializable  {
     	m.openNewWindow("views/selected_course.fxml", event);
     }
     
-    // add new card to selected course table
+    // Set up selected course
     private void setUpSelectedCourse() throws SQLException {
     	conn = SQLiteConnection.Connector();
 

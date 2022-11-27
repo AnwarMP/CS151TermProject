@@ -1,10 +1,6 @@
 package application.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import application.SQLiteConnection;
 
@@ -13,13 +9,17 @@ public class CourseModel {
 	private int courseId;
 	
 	Connection connection;
+	
+	// constructor
 	public CourseModel() {
 		connection = SQLiteConnection.Connector();
 		if(connection == null) System.exit(1);
-		
 	}
 	
-	// create user's course table
+	/**
+	 * Create user's courses table
+	 * @throws SQLException
+	 */
 	public void setupHomepage() throws SQLException {
 		Statement stmt = connection.createStatement();
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
@@ -34,8 +34,9 @@ public class CourseModel {
 				+ ");");
         
     	stmt.executeUpdate(sql1.toString());
-    	stmt.close();
+    	
     	res.close();
+    	stmt.close();
     	connection.close();
 	}
 	/**
@@ -48,14 +49,16 @@ public class CourseModel {
     	Statement stmt = connection.createStatement();
     	
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
-		// insert courses into table
+		
+    	// insert courses into table
     	StringBuffer sql1 = new StringBuffer("INSERT INTO ");
     	sql1.append(res.getString("username"));
     	sql1.append("_courses (courseName)" + " VALUES ( " + "'" + courseName + "');");
     	
-    	
     	stmt.executeUpdate(sql1.toString());
 
+    	res.close();
+    	
     	// Create course detail table if not exist
     	StringBuffer sql2 = new StringBuffer("CREATE TABLE IF NOT EXISTS ");
 
@@ -70,14 +73,20 @@ public class CourseModel {
 				
     					
     	stmt.close();
-    	res.close();
     	connection.close();
 	}
 	
-	
+	/**
+	 * Set selected course method
+	 * @param courseNumber
+	 * @param courseName
+	 * @throws SQLException
+	 */
 	public void setSelectedCourse(int courseNumber, String courseName) throws SQLException {
 		connection = SQLiteConnection.Connector();
 		Statement stmt = connection.createStatement();
+		
+		// update current selected course
 		String sql = "REPLACE INTO selected_course (id,courseName,courseNumber) " +
                   "VALUES (1, 'empty',0);"; 
 		stmt.executeUpdate(sql);
@@ -94,11 +103,17 @@ public class CourseModel {
     	connection.close();
 	}
 	
-	
+	/**
+	 * Update course method
+	 * @param courseId
+	 * @param courseName
+	 * @param updatedValue
+	 * @throws SQLException
+	 */
 	public void updateCourse(int courseId, String courseName, String updatedValue) throws SQLException {
 		Statement stmt = connection.createStatement();
         
-        
+        // update the name of course table
         StringBuffer sql1 = new StringBuffer("ALTER TABLE ");
 
 		sql1.append(courseName);	// query from db
@@ -106,9 +121,9 @@ public class CourseModel {
 		sql1.append(updatedValue);
 		sql1.append("_detail;");
 		
-		System.out.println("UPDATE COURSE DETAIL" + sql1.toString());
 		stmt.executeUpdate(sql1.toString());
 
+		// update the name of the course in courses table
         StringBuffer sql2 = new StringBuffer("UPDATE ");
 
         ResultSet res = stmt.executeQuery("SELECT * FROM session");
@@ -120,28 +135,32 @@ public class CourseModel {
 		sql2.append(" AND courseName='");
 		sql2.append(courseName);
 		sql2.append("'");
-		
-		System.out.println("UPDATE COURSE NAMEEEEE" + sql2.toString());
+
 		stmt.executeUpdate(sql2.toString());
 		
-		stmt.close();
 		res.close();
+		stmt.close();
 		connection.close();
 	}
 	
+	/**
+	 * Delete course method
+	 * @param courseId
+	 * @param courseName
+	 * @throws SQLException
+	 */
 	public void deleteCourse(int courseId, String courseName) throws SQLException{
 		Statement stmt = connection.createStatement();
 
-    	// delete course from table
+    	// delete the course table
     	StringBuffer sql1 = new StringBuffer("DROP TABLE ");
     	sql1.append(courseName);
     	sql1.append("_detail");
-		System.out.println(sql1.toString());
     	stmt.executeUpdate(sql1.toString());
     	
     	ResultSet res = stmt.executeQuery("SELECT * FROM session");
-		// delete course from table
-
+		
+    	// delete course from courses table
     	StringBuffer sql = new StringBuffer("DELETE FROM ");
     	sql.append(res.getString("username"));
     	sql.append("_courses");
@@ -152,10 +171,11 @@ public class CourseModel {
 		sql.append("'");
     	stmt.executeUpdate(sql.toString());
 
-    	stmt.close();
     	res.close();
+    	stmt.close();
     	connection.close();
 	}
+	
 	
 	public String getCourseName() {
 		return courseName;
@@ -172,8 +192,5 @@ public class CourseModel {
 	public int getCourseId() {
 		return courseId;
 	}
-	
-	
-	
-	
+
 }

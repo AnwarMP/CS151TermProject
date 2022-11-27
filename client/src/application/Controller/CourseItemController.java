@@ -73,6 +73,7 @@ public class CourseItemController implements Initializable {
     	return courseId.getText();
     }
     
+    // Set the current selected course
     @FXML
     private void selectCourseAction(ActionEvent event) throws IOException, SQLException {
     	Main m = new Main();
@@ -87,7 +88,6 @@ public class CourseItemController implements Initializable {
 		for (Node child : courseInfo.getChildren()) {
             child.setVisible(!child.isVisible());
         }
-		
 	}
 	
 	/**
@@ -113,7 +113,6 @@ public class CourseItemController implements Initializable {
 	
 	@FXML
     private void cancelEditBtnAction(ActionEvent event) throws IOException {
-    	Main m = new Main();
 		for (Node child : courseInfo.getChildren()) {
             child.setVisible(!child.isVisible());
         }
@@ -131,10 +130,7 @@ public class CourseItemController implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
-		
-		
+
 	}
 	
 	
