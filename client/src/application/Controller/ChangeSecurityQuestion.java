@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.model.ResetPasswordModel;
-import application.model.ResetSecurityQuestionModel;
+import application.model.AccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,7 +42,7 @@ public class ChangeSecurityQuestion implements Initializable {
 	@FXML
 	private Button homeButton;
 	
-	public ResetSecurityQuestionModel resetModel = new ResetSecurityQuestionModel(); 
+	public AccountModel resetModel = new AccountModel(); 
 
 	
 	@FXML

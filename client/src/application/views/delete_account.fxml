@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.ChangeUsername">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.DeleteAccountController">
    <top>
       <AnchorPane maxWidth="1362.0" prefHeight="96.0" prefWidth="1362.0" style="-fx-border-color: #c7bfbf; -fx-border-radius: 20px; -fx-background-color: FFFFFF; -fx-background-radius: 20 20 20 20;" BorderPane.alignment="CENTER">
          <children>

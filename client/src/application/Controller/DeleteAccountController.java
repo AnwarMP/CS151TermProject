@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.model.DeleteAccountModel;
+import application.model.AccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class ChangeUsername implements Initializable{
+public class DeleteAccountController implements Initializable{
 	@FXML
 	private Button doneBtn;
 	
@@ -40,7 +40,7 @@ public class ChangeUsername implements Initializable{
 	@FXML
 	private Button homeButton;
 	
-	private DeleteAccountModel model = new DeleteAccountModel();
+	private AccountModel model = new AccountModel();
 	
 	@FXML
 	private void accountSettingsOnAction(ActionEvent event) throws IOException, SQLException{
@@ -75,9 +75,6 @@ public class ChangeUsername implements Initializable{
 		String user= Username.getText();
 		String pw = Password.getText();
 		String answer = answerTextField.getText();
-		
-		
-		
 		
 		
 		// if missing any input value, prompt user to fill all
