@@ -2,26 +2,16 @@ package application.Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import application.Main;
-import application.SQLiteConnection;
-import application.model.AccountPageModel;
-import application.model.ResetPasswordModel;
+import application.model.AccountModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 public class AccountPage implements Initializable {
 	@FXML
@@ -45,7 +35,7 @@ public class AccountPage implements Initializable {
 	@FXML
 	private Button homeButton;
 	
-	public AccountPageModel accountPage = new AccountPageModel(); 
+	public AccountModel accountPage = new AccountModel(); 
 
 	public void logoutBtnOnAction(ActionEvent event) throws IOException {
 		Main m = new Main();
@@ -59,9 +49,9 @@ public class AccountPage implements Initializable {
 
 	
 	@FXML
-	public void changeUsernameOnAction(ActionEvent event) throws IOException {
+	public void deleteAccountAction(ActionEvent event) throws IOException {
 		Main m = new Main();
-		m.changeScene("views/change_username.fxml");
+		m.changeScene("views/delete_account.fxml");
 	}
 	
 	@FXML
@@ -84,8 +74,6 @@ public class AccountPage implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		String account = "something";
-		accountName.setText(account);
 	}
 	
 }

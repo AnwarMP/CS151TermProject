@@ -48,7 +48,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -fx-control-inner-background;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="DeleteAccount" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#changeUsernameOnAction" text="Delete Account" textAlignment="CENTER">
+            <Button fx:id="DeleteAccount" layoutX="598.0" layoutY="282.0" mnemonicParsing="false" onAction="#deleteAccountAction" text="Delete Account" textAlignment="CENTER">
                <font>
                   <Font size="26.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Font size="26.0" />
                </font>
             </Button>
-            <Label fx:id="accountName" layoutX="571.0" layoutY="175.0" text="Account Name">
+            <Label fx:id="accountName" layoutX="571.0" layoutY="175.0" text="Account Setting">
                <font>
                   <Font size="49.0" />
                </font>
