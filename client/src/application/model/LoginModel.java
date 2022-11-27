@@ -2,6 +2,7 @@ package application.model;
 import java.sql.*;
 
 import application.SQLiteConnection;
+import edu.sjsu.yazdankhah.crypto.util.PassUtil;
 
 public class LoginModel {
 	
@@ -57,14 +58,8 @@ public class LoginModel {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = pass.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-		c -= key;
-			encryptedPw += c;
-		}
+		PassUtil passUtil = new PassUtil();
+		String encryptedPass = passUtil.encrypt(pass);
 				
 		//To query the db to find a user with a matching username and password
 		String query = "select * from users where username = ? and password = ?";
@@ -72,7 +67,7 @@ public class LoginModel {
 		try  { 
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, user);
-			preparedStatement.setString(2, encryptedPw);
+			preparedStatement.setString(2, encryptedPass);
 
 			resultSet = preparedStatement.executeQuery();
 			

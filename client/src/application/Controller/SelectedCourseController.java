@@ -22,14 +22,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 
 public class SelectedCourseController implements Initializable {
 
 
-    @FXML
-    private AnchorPane courseBoard;
+//    @FXML
+//    private AnchorPane courseBoard;
 
     @FXML
     private Button addCard;
@@ -39,6 +38,9 @@ public class SelectedCourseController implements Initializable {
 
     @FXML
     private GridPane learnedLayout;
+    
+    @FXML
+    private GridPane allCardsLayout;
 
     @FXML
     private Button returnBtn;
@@ -77,32 +79,34 @@ public class SelectedCourseController implements Initializable {
      * @param courseModel
      * @throws IOException
      */
-    public void setUpSelectedCourse(CourseModel courseModel) throws IOException {
-    	Main m = new Main();
-		CourseItemController courseController = m.getCourseController();
-		
-		courseController.setData(courseModel);
-		
-		m.getPane().getChildren().remove(m.getPane().lookup("#editBtn"));
-		m.getPane().getChildren().remove(m.getPane().lookup("#editIcon"));
-		m.getPane().getChildren().remove(m.getPane().lookup("#selectCourseBtn"));
-		courseBoard.getChildren().add(m.getPane());
-		courseBoard.getChildren().addAll(m.getPane().getChildren());
-    }
+//    public void setUpSelectedCourse(CourseModel courseModel) throws IOException {
+//    	Main m = new Main();
+//		CourseItemController courseController = m.getCourseController();
+//		
+//		courseController.setData(courseModel);
+//		
+//		m.getPane().getChildren().remove(m.getPane().lookup("#editBtn"));
+//		m.getPane().getChildren().remove(m.getPane().lookup("#editIcon"));
+//		m.getPane().getChildren().remove(m.getPane().lookup("#selectCourseBtn"));
+//		courseBoard.getChildren().add(m.getPane());
+//		courseBoard.getChildren().addAll(m.getPane().getChildren());
+//    }
     
    
     @Override 
 	public void initialize(URL location, ResourceBundle resources) {
 
-		List<CardModel> cards;
+    	ArrayList<CardModel> cards;
 		try {
 			
 			// selected course UI
 			cards = new ArrayList<CardModel>(setUpCards());
 			
+			List<CardModel> allCards = new ArrayList<CardModel>();
 			List<CardModel> learnedCards = new ArrayList<CardModel>();
 			List<CardModel> notLearnedCards = new ArrayList<CardModel>();
 			
+
 			
 			for(int i = 0; i < cards.size(); i++) {
 				if(cards.get(i).getIsLearned() == 0)
@@ -114,6 +118,26 @@ public class SelectedCourseController implements Initializable {
 					learnedCards.add(cards.get(i));
 			}
 			
+			// All index cards
+			while(row < allCardsLayout.getRowConstraints().size()) {
+				while(col < allCardsLayout.getColumnConstraints().size() && i < cards.size()) {
+					Main m = new Main("views/card_item.fxml");
+					CardItemController cardController = m.getCardController();
+
+					cardController.setData(cards.get(i));
+					
+					allCardsLayout.add(m.getPane(), col, row);
+					col++;
+					i++;
+				}
+				row++;
+				col = 0;
+			}
+			
+			
+			row = 0;
+			col = 0;
+			i = 0;
 			// Learned layout
 			while(row < learnedLayout.getRowConstraints().size()) {
 				while(col < learnedLayout.getColumnConstraints().size() && i < learnedCards.size()) {
@@ -131,7 +155,9 @@ public class SelectedCourseController implements Initializable {
 				col = 0;
 			}
 			
-			int row = 0, col = 0, i = 0; 
+			row = 0;
+			col = 0;
+			i = 0; 
 			// Not learned layout
 			while(row < notLearnedLayout.getRowConstraints().size()) {
 				while(col < notLearnedLayout.getColumnConstraints().size() && i < notLearnedCards.size()) {
@@ -169,8 +195,6 @@ public class SelectedCourseController implements Initializable {
 
     	courseModel.setCourseId(selectedCourseRes.getInt("courseNumber"));
     	courseModel.setCourseName(selectedCourseRes.getString("courseName"));
-		
-		setUpSelectedCourse(courseModel);
 		
 		// select all cards from the selected course -- to set up the data for the card component
 		StringBuffer query = new StringBuffer("SELECT * FROM ");

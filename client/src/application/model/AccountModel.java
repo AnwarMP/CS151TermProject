@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import application.SQLiteConnection;
+import edu.sjsu.yazdankhah.crypto.util.PassUtil;
 
 public class AccountModel {
 	Connection connection;
@@ -23,14 +24,8 @@ public class AccountModel {
 	 */
 	public boolean updatePassword(String password, String answer) throws SQLException {
 		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = password.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-			c -= key;
-			encryptedPw += c;
-		}
+		PassUtil passUtil = new PassUtil();
+		String encryptedPass = passUtil.encrypt(password);
 		
 		//get username
 		Statement stmt = connection.createStatement();
@@ -61,7 +56,7 @@ public class AccountModel {
 			
 			//if it does match we can continue 
 			statement = connection.prepareStatement(query);
-			statement.setString(1, encryptedPw);
+			statement.setString(1, encryptedPass);
 			statement.setString(2, user);
 			statement.executeUpdate();
 			statement.close();
@@ -89,18 +84,11 @@ public class AccountModel {
 	 * @throws SQLException
 	 */
 	public boolean updateSecurityAnswer(String password, String username, String answer) throws SQLException {
+		PassUtil passUtil = new PassUtil();
+		String encryptedPass = passUtil.encrypt(password);
 		
 		//get username
 		Statement stmt = connection.createStatement();
-		
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = password.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-		c -= key;
-			encryptedPw += c;
-		}
 		
 		String query = "UPDATE users SET answer=? WHERE username=?";
 		String answerVerify = "select * from users where username = ? and password = ?";
@@ -111,7 +99,7 @@ public class AccountModel {
 			//Run verfication first to check if the password and username match
 			PreparedStatement verification = connection.prepareStatement(answerVerify);
 			verification.setString(1, username);
-			verification.setString(2, encryptedPw);
+			verification.setString(2, encryptedPass);
 			
 			
 			ResultSet resultSet = verification.executeQuery();		
@@ -156,20 +144,15 @@ public class AccountModel {
 	public boolean deleteAccount(String password, String username, String answer) throws SQLException {
 		
 		Statement stmt = connection.createStatement();
-		// encrypt pw
-		String encryptedPw = "";
-		char[] chars = password.toCharArray();
-		int key = 6;
-		for(char c : chars) {
-		c -= key;
-			encryptedPw += c;
-		}
+		
+		PassUtil passUtil = new PassUtil();
+		String encryptedPass = passUtil.encrypt(password);
 		
 		//Run verfication first to check if the password, security answer, and username match
 		String answerVerify = "select * from users where username = ? and password = ? and answer = ?";
 		PreparedStatement verification = connection.prepareStatement(answerVerify);
 		verification.setString(1, username);
-		verification.setString(2, encryptedPw);
+		verification.setString(2, encryptedPass);
 		verification.setString(3, answer);
 		
 		ResultSet resultSet = verification.executeQuery();		
@@ -215,7 +198,7 @@ public class AccountModel {
     	StringBuffer sql4 = new StringBuffer("DELETE FROM users WHERE username='");
 		sql4.append(username);
 		sql4.append("' AND password='");
-		sql4.append(encryptedPw);
+		sql4.append(encryptedPass);
 		sql4.append("' AND answer='");
 		sql4.append(answer);
 		sql4.append("'");
